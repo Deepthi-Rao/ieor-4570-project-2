@@ -323,12 +323,12 @@ Deploys continuously to Cloud Run from `main` (buildpack, entrypoint `uvicorn ap
 
 ## Team and data sources
 
-One data source per team member, from our data plan:
+Two members, Deepthi Rao (dgr2116) and Lavina Mital (lm4046), with at least one data source each, split by evidence layer:
 
 | Owner | Source |
 |---|---|
-| _TBD_ | Promise corpus (Wayback Machine, voter guide): `offline/build_promises.py`, `sources/promises.py` |
-| _TBD_ | Legistar bills and votes: `offline/build_legistar.py`, `sources/legistar.py` |
-| _TBD_ | NYC Open Data and Checkbook outcomes: `sources/opendata.py`, `sources/checkbook.py` |
-| _TBD_ | Discretionary funding: `offline/build_funding.py`, `sources/funding.py` |
-| _TBD_ | News search and the neutrality Reviewer: `sources/web.py`, `reviewer` in `app.py` |
+| Deepthi Rao (dgr2116) | Promise corpus (Wayback Machine, voter guide): `offline/build_promises.py`, `sources/promises.py` |
+| Deepthi Rao (dgr2116) | Legistar bills and votes: `offline/build_legistar.py`, `sources/legistar.py` |
+| Deepthi Rao (dgr2116) | News search and the neutrality Reviewer: `sources/web.py`, `reviewer` in `app.py` |
+| Lavina Mital (lm4046) | NYC Open Data and Checkbook outcomes: `sources/opendata.py`, `sources/checkbook.py` |
+| Lavina Mital (lm4046) | Discretionary funding: `offline/build_funding.py`, `sources/funding.py` |
