@@ -1,6 +1,5 @@
 import asyncio
 import json
-import os
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -201,5 +200,4 @@ async def run(question: str, url: str):
 
 
 if __name__ == "__main__":
-    # Cloud Run sets PORT and needs 0.0.0.0; locally this is still http://localhost:8000.
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    uvicorn.run(app, host="127.0.0.1", port=8000)

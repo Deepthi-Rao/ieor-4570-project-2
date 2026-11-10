@@ -1,8 +1,0 @@
-FROM python:3.12-slim
-COPY --from=ghcr.io/astral-sh/uv:0.5.11 /uv /bin/uv
-WORKDIR /app
-COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-dev --no-install-project
-COPY . .
-ENV PORT=8080
-CMD ["uv", "run", "--frozen", "--no-dev", "python", "app.py"]
