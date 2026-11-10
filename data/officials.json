@@ -1,0 +1,419 @@
+[
+  {
+    "name": "Zohran Mamdani",
+    "role": "Mayor",
+    "district": null,
+    "term_start": "2026-01-01",
+    "campaign_urls": [
+      "https://www.zohranfornyc.com/platform"
+    ]
+  },
+  {
+    "name": "Christopher Marte",
+    "role": "Council Member",
+    "district": 1,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Harvey D. Epstein",
+    "role": "Council Member",
+    "district": 2,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Erik D. Bottcher",
+    "role": "Council Member",
+    "district": 3,
+    "term_start": "2026-01-01",
+    "term_end": "2026-02-03",
+    "campaign_urls": []
+  },
+  {
+    "name": "Virginia Maloney",
+    "role": "Council Member",
+    "district": 4,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Julie Menin",
+    "role": "Council Member",
+    "district": 5,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Gale A. Brewer",
+    "role": "Council Member",
+    "district": 6,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Shaun Abreu",
+    "role": "Council Member",
+    "district": 7,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Elsie Encarnación",
+    "role": "Council Member",
+    "district": 8,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Yusef Salaam",
+    "role": "Council Member",
+    "district": 9,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Carmen N. De La Rosa",
+    "role": "Council Member",
+    "district": 10,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Eric Dinowitz",
+    "role": "Council Member",
+    "district": 11,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Kevin C. Riley",
+    "role": "Council Member",
+    "district": 12,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Shirley Aldebol",
+    "role": "Council Member",
+    "district": 13,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Pierina Ana Sanchez",
+    "role": "Council Member",
+    "district": 14,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Oswald J. Feliz",
+    "role": "Council Member",
+    "district": 15,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Althea V. Stevens",
+    "role": "Council Member",
+    "district": 16,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Justin E. Sanchez",
+    "role": "Council Member",
+    "district": 17,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Amanda C. Farías",
+    "role": "Council Member",
+    "district": 18,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Vickie Paladino",
+    "role": "Council Member",
+    "district": 19,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Sandra Ung",
+    "role": "Council Member",
+    "district": 20,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Shanel Thomas-Henry",
+    "role": "Council Member",
+    "district": 21,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Tiffany L. Cabán",
+    "role": "Council Member",
+    "district": 22,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Linda Lee",
+    "role": "Council Member",
+    "district": 23,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "James F. Gennaro",
+    "role": "Council Member",
+    "district": 24,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Shekar Krishnan",
+    "role": "Council Member",
+    "district": 25,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Julie Won",
+    "role": "Council Member",
+    "district": 26,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Nantasha M. Williams",
+    "role": "Council Member",
+    "district": 27,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Ty Hankerson",
+    "role": "Council Member",
+    "district": 28,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Lynn C. Schulman",
+    "role": "Council Member",
+    "district": 29,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Phil Wong",
+    "role": "Council Member",
+    "district": 30,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Selvena N. Brooks-Powers",
+    "role": "Council Member",
+    "district": 31,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Joann Ariola",
+    "role": "Council Member",
+    "district": 32,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Lincoln Restler",
+    "role": "Council Member",
+    "district": 33,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Jennifer Gutiérrez",
+    "role": "Council Member",
+    "district": 34,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Crystal Hudson",
+    "role": "Council Member",
+    "district": 35,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Chi A. Ossé",
+    "role": "Council Member",
+    "district": 36,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Sandy Nurse",
+    "role": "Council Member",
+    "district": 37,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Alexa Avilés",
+    "role": "Council Member",
+    "district": 38,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Shahana K. Hanif",
+    "role": "Council Member",
+    "district": 39,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Rita C. Joseph",
+    "role": "Council Member",
+    "district": 40,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Darlene Mealy",
+    "role": "Council Member",
+    "district": 41,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Chris Banks",
+    "role": "Council Member",
+    "district": 42,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Susan Zhuang",
+    "role": "Council Member",
+    "district": 43,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Simcha Felder",
+    "role": "Council Member",
+    "district": 44,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Farah N. Louis",
+    "role": "Council Member",
+    "district": 45,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Mercedes Narcisse",
+    "role": "Council Member",
+    "district": 46,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Kayla Santosuosso",
+    "role": "Council Member",
+    "district": 47,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Inna Vernikov",
+    "role": "Council Member",
+    "district": 48,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Kamillah Hanks",
+    "role": "Council Member",
+    "district": 49,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "David M. Carr",
+    "role": "Council Member",
+    "district": 50,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  },
+  {
+    "name": "Frank Morano",
+    "role": "Council Member",
+    "district": 51,
+    "term_start": "2026-01-01",
+    "term_end": "2029-12-31",
+    "campaign_urls": []
+  }
+]
