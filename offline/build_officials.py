@@ -33,6 +33,23 @@ MAYOR = {
     "campaign_urls": ["https://www.zohranfornyc.com/platform"],
 }
 
+# Members NYC Open Data's roster doesn't list yet, e.g. winners of special elections.
+# Add an entry here when a seat changes hands; remove it once the dataset catches up.
+SUPPLEMENT = [
+    {
+        "name": "Carl Wilson",
+        "role": "Council Member",
+        "district": 3,
+        # Won the special election for Erik Bottcher's seat; the swearing-in date isn't confirmed.
+        "term_start": "2026-04-28",
+        "term_start_note": "date of the special election he won, not a confirmed swearing-in date",
+        "elected": "special election, 2026-04-28",
+        "term_end": "2029-12-31",
+        "campaign_urls": [],
+        "source_url": "https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/",
+    },
+]
+
 
 def roster() -> list[dict]:
     rows = httpx.get(ROSTER, params={"$where": "term_start >= '2026-01-01'", "$order": "district", "$limit": 200}, timeout=60).json()
@@ -65,6 +82,9 @@ async def discover(person: dict) -> list[str]:
 async def main(discover_sites: bool) -> None:
     previous = {o["name"]: o for o in json.loads(OUT.read_text())} if OUT.exists() else {}
     officials = [MAYOR] + roster()
+    listed = {o["name"] for o in officials}
+    officials += [o for o in SUPPLEMENT if o["name"] not in listed]
+    officials.sort(key=lambda o: (o["district"] or 0, o.get("term_start", "")))  # mayor first, then by district
     for o in officials:
         o["campaign_urls"] = previous.get(o["name"], {}).get("campaign_urls") or o["campaign_urls"]
     if discover_sites:

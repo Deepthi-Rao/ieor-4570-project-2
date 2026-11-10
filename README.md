@@ -30,17 +30,19 @@ local enough that a model can't answer from memory (see the no-tools baselines b
             ├─► Researcher (legislation) search_legislation, search_legislation_live, get_votes
             ├─► Researcher (outcomes)    search_datasets, query_open_data, search_spending, search_discretionary_funding
             ├─► Researcher (news)        web_search, fetch_page
-            │  reads findings; sends more Researchers for gaps (≤ 2 rounds, ≤ 8 Researchers, 180 s budget)
+            │  reads findings; sends more Researchers for gaps (≤ 2 more rounds, ≤ 8 Researchers, 180 s budget)
             ▼
          Writer (findings only → cited verdict) ─► Reviewer (neutrality + every fact/link checked against findings) ─► report
 ```
 
 - **Five agent shapes:** Lead, Researcher (4 specialist kinds), Writer, Reviewer. The Reviewer is the "neutrality reviewer" from our data plan.
 - **Parallel fan-out:** the Lead calls `research` several times in one turn. Each Researcher is a fresh `Agent` run with its own context and tools (`app.py: research`).
-- **Goes back for gaps:** the Lead reads the findings and sends more Researchers for any missing layer, up to 2 more rounds. Code caps it: `MAX_RESEARCHERS = 8`, `RESEARCH_SECONDS = 180`, `LEAD_TURNS = 10`, `RESEARCHER_TURNS = 10`, which keeps every answer inside the graders' 5 minutes.
-- **Clarification:** a question without an official and a promise/topic ("Is the city doing better?") gets `CLARIFY:` with examples drawn from the real roster. Your answer continues the same session.
+- **Goes back for gaps:** the Lead reads the findings and sends more Researchers for any missing layer, up to 2 more rounds. Code caps it, not just the prompt: `MAX_ROUNDS = 3` (researchers sent in one turn are one round), `MAX_RESEARCHERS = 8`, `RESEARCH_SECONDS = 180`, `LEAD_TURNS = 10`, `RESEARCHER_TURNS = 10`, which keeps every answer inside the graders' 5 minutes.
+- **Clarification:** a question without an official and a promise/topic gets a clarifying question instead of research, with examples drawn from the real roster (never from the model's memory). Your answer continues the same session. A real run (4 s, no tools called):
+  > **Q:** Is the city council doing a good job?
+  > **A:** Which official and specific policy topic would you like to evaluate? For example, you could ask about Mayor Zohran Mamdani's promises on public transit or District 22 Council Member Tiffany L. Cabán's promises on public safety.
 - **Citations:** every tool returns a `source_url` (archived page, dataset, Legistar bill, Checkbook, news article). Grounded search links are resolved to the real article URL. The Writer may only use links that appear in the findings, and the Reviewer removes any that don't.
-- **Admits what the data can't answer:** tools return explicit "no evidence found" and coverage notes (e.g. funding data ends in FY2021), and the Writer separates "no evidence" from "didn't happen".
+- **Admits what the data can't answer:** tools return explicit "no evidence found" and coverage notes (e.g. funding data has FY2027 and FY2009–FY2021, nothing in between), and the Writer separates "no evidence" from "didn't happen".
 
 ### API
 
@@ -83,6 +85,7 @@ All shipped data is committed (largest file ~10 MB gzipped), so the Cloud Run de
 - **Legistar token:** the Council emails it by hand. Until `LEGISTAR_TOKEN` is set (locally in `.env`, or on Cloud Run as a variable) and `build_legistar.py` has run, the legislation researcher is disabled and reports say bills and votes couldn't be checked.
 - **Discretionary funding** has FY2027 (this Council's first budget) and FY2009–FY2021. There's nothing for FY2022–FY2026: FY2026 was the previous Council's budget. Schedule C lists awards designated at adoption, so initiatives the Council designates later ("post-adoption", e.g. Swim Safety) aren't in it.
 - **Checkbook NYC** sits behind bot protection that can block bursts. Requests go one at a time, and a block is reported as "unavailable", not as "no spending". Contracts can be searched by agency and purpose, but not by vendor name: the API only takes vendor codes, so vendor questions go through payments (`kind='spending'`).
+- **Special elections:** NYC Open Data's roster doesn't list Carl Wilson yet. He won District 3's special election on 2026-04-28 after Erik Bottcher left office ([City & State](https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/)), so `build_officials.py` adds him from a short `SUPPLEMENT` list. His term start there is the election date: his swearing-in date isn't confirmed.
 - **Promise corpus:** the mayor's archived platform and policy pages are built (56 promises, 32 specific). `--discover` found archived campaign sites for 29 of the 51 Council members (`campaign_urls_unverified: true` in `data/officials.json`). Check them, then run `build_promises.py` to add their promises.
 - **Matching promises to evidence** is the hard part. When no dataset measures a promise, the outcomes researcher says so instead of stretching a loosely related one.
 
@@ -316,6 +319,7 @@ gcloud auth application-default login       # Gemini on Vertex AI
 cp .env.example .env                         # optional: LEGISTAR_TOKEN, SOCRATA_APP_TOKEN
 uv run uvicorn app:app --port 8000           # http://localhost:8000
 uv run offline/run_samples.py                # re-run the README samples (agent + no-tools baseline)
+uv run pytest                                # offline tests: data, Checkbook parsing, round cap, citation check
 ```
 
 Deploys continuously to Cloud Run from `main` (buildpack, entrypoint `uvicorn app:app --host 0.0.0.0 --port $PORT`).

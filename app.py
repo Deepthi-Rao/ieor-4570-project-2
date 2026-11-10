@@ -48,6 +48,8 @@ SETTINGS = ModelSettings(extra_args={"vertex_location": "global", "timeout": 90,
 # Reviewer have time to finish; prompts ask for restraint, and code enforces it.
 RESEARCH_SECONDS = 180
 MAX_RESEARCHERS = 8
+# Rounds of research: the first fan-out, plus at most two follow-ups for gaps.
+MAX_ROUNDS = 3
 LEAD_TURNS = 10
 RESEARCHER_TURNS = 10
 TOOL_RESULT_CHARS = 2_000  # how much of each tool result /chat returns in tool_calls
@@ -61,6 +63,20 @@ class Research:
     deadline: float
     researchers: int = 0
     findings: list[str] = field(default_factory=list)
+    rounds: int = 0  # fan-outs so far: researchers the Lead sends in one turn are one round
+    running: int = 0  # researchers running right now
+
+
+def join_round(state: Research) -> bool:
+    """Count a researcher into the current round, or start a new one if none is running.
+    The SDK starts all of a turn's tool calls together, so a call that finds nothing running is the
+    first of a new turn. False when that turn would be one round too many."""
+    if state.running == 0:
+        if state.rounds >= MAX_ROUNDS:
+            return False
+        state.rounds += 1
+    state.running += 1
+    return True
 
 
 # --- Tools: thin wrappers over sources/. Blocking HTTP runs in a thread so parallel
@@ -267,6 +283,8 @@ async def research(ctx: RunContextWrapper[Research], task: str, kind: str) -> st
         return "No researchers left. Reply DONE."
     if time.monotonic() > ctx.context.deadline:
         return "Out of research time. Reply DONE: the writer will note what's unanswered."
+    if not join_round(ctx.context):
+        return f"That would be research round {MAX_ROUNDS + 1}; the limit is {MAX_ROUNDS}. Reply DONE: the writer will note what's unanswered."
     # What researcher.as_tool() does: run it in a fresh context and return its answer.
     # Written out so each run gets a numbered copy, and its own column in the context panel.
     ctx.context.researchers += 1
@@ -279,6 +297,8 @@ async def research(ctx: RunContextWrapper[Research], task: str, kind: str) -> st
         findings = str(result.final_output)
     except Exception as e:  # out of turns or time: the Lead and Writer should know this part is missing
         findings = f"- This researcher didn't finish ({type(e).__name__}); treat this task as unanswered."
+    finally:
+        ctx.context.running -= 1
     ctx.context.findings.append(f"Task ({kind}): {task}\n\n{findings}")
     return findings
 
@@ -288,18 +308,25 @@ async def research(ctx: RunContextWrapper[Research], task: str, kind: str) -> st
 
 def roster() -> str:
     """Who's in scope, from data/officials.json, so the Lead never names officials from memory."""
+    today = time.strftime("%Y-%m-%d")
     lines = []
     for o in promises.load_officials():
         where = f"District {o['district']}" if o.get("district") else o["role"]
-        lines.append(f"- {where}: {o['name']}" + (f" (left office {o['term_end']})" if o.get("term_end", "9") < time.strftime("%Y-%m-%d") else ""))
+        notes = []
+        if o.get("elected"):
+            notes.append(f"elected in a {o['elected']}")  # e.g. 'special election, 2026-04-28'
+        if o.get("term_end", "9") < today:
+            notes.append(f"left office {o['term_end']}")
+        lines.append(f"- {where}: {o['name']}" + (f" ({'; '.join(notes)})" if notes else ""))
     return "\n".join(lines)
 
 
-lead = Agent(
-    name="Lead",
-    instructions=f"""\
+def lead_instructions(ctx, agent) -> str:
+    """Built per run, not at import: a Cloud Run instance can live for days, and the date and roster must stay current."""
+    return f"""\
 You lead a team that checks whether NYC officials elected in 2025 (the mayor and City Council
-members, in office since January 2026) kept their campaign promises. Today is {time.strftime('%Y-%m-%d')}.
+members, in office since January 2026, plus anyone who won a seat in a special election since)
+kept their campaign promises. Today is {time.strftime('%Y-%m-%d')}.
 
 1. Decide if the question is specific enough. It needs an official (a name, 'the mayor', or a
    district) and a promise or topic, or a clear ask like "which of X's promises are specific?".
@@ -314,11 +341,16 @@ members, in office since January 2026) kept their campaign promises. Today is {t
    what they promised ('promises', if not on file), what they did ('legislation' for Council
    members; for the mayor, 'news' about executive actions), and what happened ('outcomes', 'news').
 4. Read the findings. If a layer the verdict depends on is still empty, call research again for
-   just that gap. Do this at most twice.
+   just that gap. Do this at most twice (the code allows {MAX_ROUNDS} rounds in all).
 5. When the question is covered, or the gaps can't be filled, reply DONE and nothing else.
 
 Officials in scope:
-{roster()}""",
+{roster()}"""
+
+
+lead = Agent(
+    name="Lead",
+    instructions=lead_instructions,
     model=MODEL,
     model_settings=SETTINGS,
     tools=[list_officials, get_promises, research],

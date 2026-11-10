@@ -42,6 +42,17 @@
     "campaign_urls_unverified": true
   },
   {
+    "name": "Carl Wilson",
+    "role": "Council Member",
+    "district": 3,
+    "term_start": "2026-04-28",
+    "term_start_note": "date of the special election he won, not a confirmed swearing-in date",
+    "elected": "special election, 2026-04-28",
+    "term_end": "2029-12-31",
+    "campaign_urls": [],
+    "source_url": "https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/"
+  },
+  {
     "name": "Virginia Maloney",
     "role": "Council Member",
     "district": 4,
