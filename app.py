@@ -14,10 +14,12 @@ the draft for neutrality and for claims or links the findings don't support.
 import asyncio
 import json
 import os
+import re
 import time
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
+from urllib.parse import unquote
 
 import uvicorn
 from agents import Agent, ModelSettings, RunContextWrapper, Runner, function_tool, set_tracing_disabled
@@ -72,17 +74,18 @@ async def list_officials() -> str:
 
 
 @function_tool
-async def get_promises(ctx: RunContextWrapper[Research], official: str, topic: str = "") -> str:
+async def get_promises(ctx: RunContextWrapper[Research], official: str, topic: str = "", specific_only: bool = False) -> str:
     """Get an official's campaign promises from the archived campaign-page corpus.
     Each promise has the exact quote, whether it's specific (checkable) or vague, and the archived URL to cite.
 
     Args:
         official: A name ('Mamdani', 'Caban'), 'mayor', or a district ('District 33').
         topic: Optional words to filter by, e.g. 'rent' or 'buses'.
+        specific_only: True for only the promises specific enough to check against data.
     """
-    result = promises.get_promises(official, topic)
+    result = promises.get_promises(official, topic, specific_only)
     # The Writer sees only findings: put the promise wording and its archived link there too.
-    entry = f"Task (promises): get_promises(official={official!r}, topic={topic!r})\n\n{result}"
+    entry = f"Task (promises): get_promises(official={official!r}, topic={topic!r}, specific_only={specific_only})\n\n{result}"
     if entry not in ctx.context.findings:
         ctx.context.findings.append(entry)
     return result
@@ -325,10 +328,12 @@ writer = Agent(
     instructions="""\
 Write a short report in markdown that answers the question using only the findings you're given.
 
-- Start with a verdict line for each promise checked: **Kept**, **In progress**, **No action found**,
-  **Broken** (only if the findings show it was dropped or reversed), or **Can't determine**
-  (the data doesn't measure it). Then one sentence on why.
-- Then three short sections: What they promised (quote it, with the archived link and date),
+- Answer the question that was asked. If it asks for something other than whether a promise was
+  kept (e.g. "which promises are specific?"), answer that directly, as a list, and skip verdicts.
+- When checking whether a promise was kept, start with a verdict line for each promise checked:
+  **Kept**, **In progress**, **No action found**, **Broken** (only if the findings show it was
+  dropped or reversed), or **Can't determine** (the data doesn't measure it), then one sentence on why.
+  Then three short sections: What they promised (quote it, with the archived link and date),
   What they did, What happened. In each, say plainly if the findings have nothing.
 - Keep the links: end every sentence that states a fact with the link from its finding.
   Only use links that appear in the findings.
@@ -382,7 +387,21 @@ async def investigate(conversation: list[dict], hooks: PanelHooks) -> tuple[str,
     final = await Runner.run(
         reviewer, f"Question:\n{question}\n\nFindings:\n\n{findings}\n\nDraft report:\n\n{draft.final_output}", hooks=hooks
     )
-    return "report", str(final.final_output)
+    return "report", verify_links(str(final.final_output), findings)
+
+
+LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+
+
+def verify_links(report: str, findings: str) -> str:
+    """The last check on citations, in code rather than a prompt: a link must appear in the findings.
+    Any other link was made up by the Writer or Reviewer. Keep its text and drop the link."""
+    def check(m: re.Match) -> str:
+        url = m.group(2)
+        if url in findings or unquote(url) in unquote(findings):
+            return m.group(0)
+        return f"{m.group(1)} (unverified source removed)"
+    return LINK.sub(check, report)
 
 
 class ToolCallHooks(PanelHooks):

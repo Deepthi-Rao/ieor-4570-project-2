@@ -14,10 +14,10 @@ DATA = Path(__file__).parent.parent / "data"
 MAX_RESULT_CHARS = 12_000
 
 
-def to_json(payload) -> str:
+def to_json(payload, limit: int = MAX_RESULT_CHARS) -> str:
     text = json.dumps(payload, default=str, ensure_ascii=False)
-    if len(text) > MAX_RESULT_CHARS:
-        text = text[:MAX_RESULT_CHARS] + ' ... [truncated: narrow the query to see the rest]"'
+    if len(text) > limit:
+        text = text[:limit] + ' ... [truncated: narrow the query to see the rest]"'
     return text
 
 

@@ -14,7 +14,10 @@
     "district": 1,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.votemarte.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Harvey D. Epstein",
@@ -22,7 +25,10 @@
     "district": 2,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.peopleforharvey.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Erik D. Bottcher",
@@ -30,7 +36,10 @@
     "district": 3,
     "term_start": "2026-01-01",
     "term_end": "2026-02-03",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.erikbottcher.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Virginia Maloney",
@@ -38,7 +47,10 @@
     "district": 4,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.virginiamaloney.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Julie Menin",
@@ -46,7 +58,10 @@
     "district": 5,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://juliefornyc.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Gale A. Brewer",
@@ -54,7 +69,10 @@
     "district": 6,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://galebrewer.nyc/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Shaun Abreu",
@@ -62,7 +80,8 @@
     "district": 7,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Elsie Encarnación",
@@ -70,7 +89,10 @@
     "district": 8,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.elsieforcouncil.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Yusef Salaam",
@@ -86,7 +108,10 @@
     "district": 10,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://carmenfornyc.com/issues/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Eric Dinowitz",
@@ -94,7 +119,10 @@
     "district": 11,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.dinowitzforcouncil.com/issues"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Kevin C. Riley",
@@ -102,7 +130,8 @@
     "district": 12,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Shirley Aldebol",
@@ -110,7 +139,10 @@
     "district": 13,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.shirleyaldebolforcouncil.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Pierina Ana Sanchez",
@@ -118,7 +150,10 @@
     "district": 14,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://pierinasanchez.nyc/issues"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Oswald J. Feliz",
@@ -126,7 +161,8 @@
     "district": 15,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Althea V. Stevens",
@@ -134,7 +170,8 @@
     "district": 16,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Justin E. Sanchez",
@@ -142,7 +179,10 @@
     "district": 17,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.sanchez2025.nyc"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Amanda C. Farías",
@@ -150,7 +190,10 @@
     "district": 18,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.amandafarias.nyc"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Vickie Paladino",
@@ -158,7 +201,10 @@
     "district": 19,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.vickiefornyc.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Sandra Ung",
@@ -174,7 +220,10 @@
     "district": 21,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.shanelforcouncil.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Tiffany L. Cabán",
@@ -182,7 +231,10 @@
     "district": 22,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.cabanforqueens.com/issues/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Linda Lee",
@@ -190,7 +242,10 @@
     "district": 23,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://lindaleefornyc.com/issues"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "James F. Gennaro",
@@ -198,7 +253,10 @@
     "district": 24,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://gennarofornewyork.com/issues/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Shekar Krishnan",
@@ -214,7 +272,10 @@
     "district": 26,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.juliewon.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Nantasha M. Williams",
@@ -222,7 +283,10 @@
     "district": 27,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.nantashawilliams.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Ty Hankerson",
@@ -230,7 +294,10 @@
     "district": 28,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.tyhankerson.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Lynn C. Schulman",
@@ -238,7 +305,10 @@
     "district": 29,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://lynnschulman.com/issues"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Phil Wong",
@@ -246,7 +316,8 @@
     "district": 30,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Selvena N. Brooks-Powers",
@@ -254,7 +325,8 @@
     "district": 31,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Joann Ariola",
@@ -262,7 +334,8 @@
     "district": 32,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Lincoln Restler",
@@ -270,7 +343,10 @@
     "district": 33,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://lincolnforcouncil.com/issues"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Jennifer Gutiérrez",
@@ -278,7 +354,8 @@
     "district": 34,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Crystal Hudson",
@@ -286,7 +363,10 @@
     "district": 35,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.crystalforbk.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Chi A. Ossé",
@@ -294,7 +374,8 @@
     "district": 36,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Sandy Nurse",
@@ -302,7 +383,8 @@
     "district": 37,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Alexa Avilés",
@@ -310,7 +392,10 @@
     "district": 38,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.alexaforcouncil.com/platform"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Shahana K. Hanif",
@@ -326,7 +411,10 @@
     "district": 40,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.ritajoseph.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Darlene Mealy",
@@ -334,7 +422,8 @@
     "district": 41,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Chris Banks",
@@ -342,7 +431,10 @@
     "district": 42,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.voteforchrisbanks.com"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Susan Zhuang",
@@ -350,7 +442,8 @@
     "district": 43,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Simcha Felder",
@@ -358,7 +451,8 @@
     "district": 44,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Farah N. Louis",
@@ -366,7 +460,10 @@
     "district": 45,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.farahlouis.com/policies"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Mercedes Narcisse",
@@ -382,7 +479,10 @@
     "district": 47,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.kaylaforcouncil.com/"
+    ],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Inna Vernikov",
@@ -398,7 +498,8 @@
     "district": 49,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "David M. Carr",
@@ -406,7 +507,8 @@
     "district": 50,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   },
   {
     "name": "Frank Morano",
@@ -414,6 +516,7 @@
     "district": 51,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [],
+    "campaign_urls_unverified": true
   }
 ]

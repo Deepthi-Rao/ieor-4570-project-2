@@ -57,7 +57,10 @@ def list_officials() -> str:
     })
 
 
-def get_promises(official: str, topic: str = "") -> str:
+FIELDS = ("promise", "quote", "category", "specific", "location", "target", "source_url", "snapshot_date")
+
+
+def get_promises(official: str, topic: str = "", specific_only: bool = False) -> str:
     matches = find_official(official)
     if not matches:
         return error(f"No official in scope matches '{official}'.", "Call list_officials to see names and districts.")
@@ -68,6 +71,8 @@ def get_promises(official: str, topic: str = "") -> str:
     if topic:
         words = [w for w in _norm(topic).split() if len(w) > 2]
         promises = [p for p in promises if any(w in _norm(p["promise"] + " " + p.get("category", "") + " " + p.get("quote", "")) for w in words)]
+    if specific_only:
+        promises = [p for p in promises if p.get("specific")]
     if not promises:
         return to_json({
             "official": person,
@@ -75,4 +80,6 @@ def get_promises(official: str, topic: str = "") -> str:
             "note": "No archived promises on file for this official" + (f" about '{topic}'" if topic else "")
             + ". Say the promise corpus can't answer this; don't guess what they promised.",
         })
-    return to_json({"official": person, "promises": promises})
+    # Only the fields the agents use: the full records for a busy official overflow the result cap.
+    slim = [{k: p[k] for k in FIELDS if p.get(k) not in (None, "")} for p in promises]
+    return to_json({"official": person, "count": len(slim), "promises": slim}, limit=30_000)
