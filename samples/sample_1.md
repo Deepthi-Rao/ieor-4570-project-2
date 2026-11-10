@@ -2,79 +2,39 @@
 
 **Question:** Is Mayor Mamdani on track to build 200,000 affordable homes?
 
-## Agent (report, 81 s, 13 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news))
-
-Mayor Zohran Mamdani is in progress on his goals to build 200,000 affordable homes, having launched a 10-year housing blueprint to scale up production over the next decade ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). At ten months into the 10-year timeline, the city has started 11,585 affordable units since January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
-
----
-
-### Promise 1: Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.
+## Agent (report, 66 s, 24 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news), Researcher 3 (legislation), Researcher 4 (news))
 
 **In progress**
-Mayor Mamdani released a 10-year housing blueprint setting this target and has started construction on 11,585 affordable units, though this is early in the 10-year timeline ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
+Mayor Mamdani has released a 10-year housing plan, committed initial capital funding, and initiated zoning fast-tracks, but early construction and financing rates are currently below the pace required to meet the 10-year target.
 
-#### What they promised
-"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
+### What they promised
+During his campaign, Zohran Mamdani promised that his administration would "construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families" [https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york]. He also pledged to "triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years" [https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york].
 
-#### What they did
-In May 2026, Mayor Mamdani and Deputy Mayor Leila Bozorg released "Block by Block: The Housing Plan for a New Era," which outlines the goal to build 200,000 new affordable homes over the next decade ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). The plan aims to scale annual production from 14,000 new homes in fiscal year 2027 to over 21,000 new homes annually by fiscal year 2031 ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)). On October 1, 2026, the administration fast-tracked 12 community districts to advance this initiative ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/10/mamdani-administration-puts-12-neighborhoods-on-fast-track-for-a)).
+### What they did
+In May 2026, Mayor Mamdani released a housing plan titled *Block by Block: The Housing Plan for a New Era*, which outlines a target to build 200,000 new affordable homes and preserve another 200,000 existing affordable homes over the next decade [https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n]. This 10-year plan is backed by a capital commitment of $22 billion over its first five years [https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n]. In October 2026, the administration placed 12 community districts on a fast track for zoning updates to accelerate affordable housing production [https://www.nyc.gov/mayors-office/news/2026/10/mamdani-administration-puts-12-neighborhoods-on-fast-track-for-a].
 
-#### What happened
-Housing Preservation and Development (HPD) records show that 11,585 affordable units have been started across 539 projects since January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). This rate is below the preceding baseline year of 2025, when 29,277 units were started ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). Analysts noted that hitting the 10-year goal of 200,000 new and 200,000 preserved homes requires maintaining a consistent pace of 10,000 new and 10,000 preserved units every six months ([City Limits](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)). However, the administration's plan is scheduled to scale up over time rather than starting at that peak rate ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
----
-
-### Promise 2: Invest $100 billion over 10 years to provide housing for families earning under $70,000 a year.
-
-**In progress**
-The administration backed its 10-year housing blueprint with a $22 billion capital investment over the first five years, though exact spending data from Checkbook NYC is currently unavailable ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [Checkbook NYC](https://www.checkbooknyc.com/)).
-
-#### What they promised
-"This $100 billion dollar commitment over 10 years will once again make New York City a leader in providing homes for families who earn less than $70,000 a year—the median income for renters in New York—and ensure that our City’s resources are used to provide jobs with safety and dignity." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
-
-#### What they did
-The Mamdani administration backed its 10-year blueprint with a capital investment of $22 billion in housing over its first five years ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). The plan dedicates 30% of the 200,000 new affordable homes to extremely low-income households and 20% to very low-income residents ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
-#### What happened
-Checkbook NYC spending and contract data for HPD is currently unavailable to query due to a temporary access blockage, so the exact amount spent so far under this administration cannot be verified ([Checkbook NYC](https://www.checkbooknyc.com/)). This indicates a lack of available data rather than confirming that no spending occurred ([Checkbook NYC](https://www.checkbooknyc.com/)).
-
----
-
-### Promise 3: Construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families.
-
-**In progress**
-The administration has established its 10-year plan for building 200,000 new homes and has completed or started several thousand units, although it is early in the 10-year timeline ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
-
-#### What they promised
-"A Mamdani administration will construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
-
-#### What they did
-Mayor Mamdani released "Block by Block: The Housing Plan for a New Era," a 10-year housing blueprint setting a target to build 200,000 new affordable homes ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). This plan scales up annual production over several years to reach its decade-long goals ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
-#### What happened
-The HPD dataset records 11,585 affordable units started and 15,660 affordable units completed across projects since January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). This is lower than the previous baseline year of 2025, which saw 29,277 starts and 25,697 completions ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
+### What happened
+During the first six months of 2026, the city financed 12,491 affordable homes, which included 6,632 new units, 4,951 preserved units, and 908 NYCHA PACT units [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. This represented the lowest six-month production total since 2022 [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. Analysts noted that to achieve the 10-year goal of 200,000 new homes, the administration must average 10,000 new units every six months [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. Additionally, from January 1 through September 30, 2026, the Department of Housing Preservation and Development recorded 11,585 affordable housing units with a project start date, compared to 29,277 units in the full year of 2025 [https://data.cityofnewyork.us/d/hg8x-zxpr]. Housing experts noted that development pipelines take years to move and that early term figures reflect transition periods [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/].
 
 ## Baseline: gemini-3.5-flash, no tools, no system prompt
 
-It appears there is a slight misconception in your question: **Zohran Mamdani is not currently the Mayor.** 
+To answer your question, it is first important to clarify a key detail: **Zohran Mamdani is not the Mayor of New York City.** 
 
-Mamdani is a New York State Assemblymember representing District 36 in Astoria, Queens. In October 2024, he announced his candidacy to run for Mayor of New York City in the June 2025 Democratic primary. 
+He is currently a New York State Assemblymember representing Astoria, Queens, and is a candidate running in the June 2025 Democratic primary for Mayor of New York City. Because he is not in office, he does not have an active mayoral administration or a track record of municipal building projects to evaluate.
 
-Because he is a candidate and does not hold the office of mayor, **he does not have an active administration or municipal track record of building housing.** 
+However, housing is the cornerstone of Mamdani’s mayoral campaign. Here is how his housing platform and the "200,000 homes" figure align with New York City's political landscape:
 
-However, his **campaign platform** focuses heavily on housing reform. Here is what we know about his housing proposals and how they relate to large-scale affordable housing goals:
+### 1. The "200,000 Affordable Homes" Target (A Previous Mayor's Plan)
+The specific goal of building or preserving **200,000 affordable homes** was the signature housing policy of former NYC Mayor **Bill de Blasio**. 
+* De Blasio launched his "Housing New York" plan in 2014 with the goal of building or preserving 200,000 affordable units over 10 years (a goal he later accelerated to 300,000 units by 2026). 
+* Current Mayor **Eric Adams** has set a different "moonshot" goal of facilitating the construction of **500,000 new homes** over a decade through his "City of Yes" zoning text amendments.
 
-### 1. The Platform: "Social Housing"
-As a member of the Democratic Socialists of America (DSA), Mamdani’s housing platform rejects the traditional private-developer-led model of affordable housing. Instead, he campaigns on a **social housing** model. This involves:
-*   Creating a city- or state-run authority to acquire land and build permanently affordable, publicly owned, and tenant-controlled housing.
-*   Moving away from relying on tax incentives (like the former 421-a or the newer 485-x programs) to entice private developers to build a small percentage of "affordable" units in luxury buildings.
-*   Implementing universal rent control and stronger tenant protections.
+### 2. Zohran Mamdani's Housing Platform
+As a democratic socialist, Mamdani’s mayoral platform rejects the traditional developer-subsidy model used by previous mayors to build affordable housing. Instead of relying on private developers to build "affordable" units in exchange for tax breaks, Mamdani’s platform focuses on:
+* **Social Housing:** Creating publicly funded, permanently affordable, and tenant-controlled housing.
+* **Rent Freezes:** Utilizing the Rent Guidelines Board to implement rent freezes for the city’s roughly 1 million rent-stabilized apartments.
+* **Fully Funding NYCHA:** Stripping city resources from other sectors to heavily invest in repairing the New York City Housing Authority's public housing stock.
+* **Universal Tenant Protections:** Strengthening eviction protections and expanding the right to counsel for tenants facing eviction.
 
-### 2. Where does the "200,000" figure come from?
-While Mamdani’s specific campaign documents will outline his exact numerical targets as the 2025 race progresses, the target of building or preserving hundreds of thousands of units of social housing is a common benchmark for the progressive coalitions supporting him. 
-*   For example, state-level progressive coalitions (which Mamdani has championed in the Assembly) have pushed for a **Social Housing Development Authority** to construct and preserve hundreds of thousands of green, deeply affordable homes across New York State over a decade.
-
-### 3. The Current Mayor's Housing Track Record
-If you are thinking of the current administration’s housing targets, that belongs to **Mayor Eric Adams**:
-*   In late 2022, Mayor Adams announced a "moonshot" goal of building **500,000 new homes** over a decade (the "Get Stuff Built" initiative).
-*   **Is Adams on track?** Most housing policy experts and industry trackers note that NYC is currently **not on track** to hit Adams' 500,000-home goal. High interest rates, the expiration of key tax incentives, and bureaucratic delays have slowed housing starts. To reach 500,000 homes in 10 years, the city needs to build roughly 50,000 units a year, but recent years have seen new housing permits hover closer to 11,000 to 16,000 annually. Adams has championed a major zoning reform package called "City of Yes for Housing Opportunity" to try and accelerate this pace.
+### Summary
+Because Mamdani is a candidate and not the sitting mayor, he is not "on track" to build any municipal housing units yet. If he is elected in 2025, his approach to housing will likely focus on rent control and public/social housing acquisition rather than the traditional private-developer-led "affordable housing" targets set by Mayors de Blasio and Adams.

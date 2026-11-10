@@ -17,7 +17,7 @@
     "campaign_urls": [
       "https://www.votemarte.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Harvey D. Epstein",
@@ -28,7 +28,7 @@
     "campaign_urls": [
       "https://www.peopleforharvey.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Erik D. Bottcher",
@@ -48,9 +48,14 @@
     "term_start": "2026-04-28",
     "term_start_note": "date of the special election he won, not a confirmed swearing-in date",
     "elected": "special election, 2026-04-28",
-    "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "source_url": "https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/"
+    "term_end": "2026-12-31",
+    "campaign_urls": [
+      "https://www.carlwilsonnyc.com/"
+    ],
+    "source_url": "https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/",
+    "election_day": "20260428",
+    "term_end_note": "a special-election term runs to the next general election; the seat was on the 2026-11-03 ballot, and that result isn't loaded",
+    "campaign_urls_checked": "2026-11-10: linked from his Wikipedia page; archived on election night, 2026-04-28"
   },
   {
     "name": "Virginia Maloney",
@@ -61,7 +66,8 @@
     "campaign_urls": [
       "https://www.virginiamaloney.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race",
+    "campaign_urls_note": "home page is a JavaScript shell with no text in the archive; promises come from archived subpages, if any"
   },
   {
     "name": "Julie Menin",
@@ -72,7 +78,7 @@
     "campaign_urls": [
       "https://juliefornyc.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Gale A. Brewer",
@@ -83,7 +89,7 @@
     "campaign_urls": [
       "https://galebrewer.nyc/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Shaun Abreu",
@@ -91,8 +97,10 @@
     "district": 7,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": [
+      "http://shaunabreu.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Elsie Encarnación",
@@ -103,7 +111,7 @@
     "campaign_urls": [
       "https://www.elsieforcouncil.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Yusef Salaam",
@@ -111,7 +119,10 @@
     "district": 9,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.harlemforyusef.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Carmen N. De La Rosa",
@@ -122,7 +133,7 @@
     "campaign_urls": [
       "https://carmenfornyc.com/issues/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Eric Dinowitz",
@@ -131,9 +142,10 @@
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
     "campaign_urls": [
-      "https://www.dinowitzforcouncil.com/issues"
+      "https://www.dinowitzforcouncil.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race",
+    "campaign_urls_note": "home page (archived 2025-02-21) still titled 'Eric Dinowitz for Council 2023'; /issues was last archived in 2021, so it isn't used"
   },
   {
     "name": "Kevin C. Riley",
@@ -141,8 +153,7 @@
     "district": 12,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Shirley Aldebol",
@@ -153,7 +164,8 @@
     "campaign_urls": [
       "https://www.shirleyaldebolforcouncil.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race",
+    "campaign_urls_note": "home page is a JavaScript shell with no text in the archive; promises come from archived subpages, if any"
   },
   {
     "name": "Pierina Ana Sanchez",
@@ -164,7 +176,7 @@
     "campaign_urls": [
       "https://pierinasanchez.nyc/issues"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Oswald J. Feliz",
@@ -172,8 +184,7 @@
     "district": 15,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Althea V. Stevens",
@@ -181,8 +192,7 @@
     "district": 16,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Justin E. Sanchez",
@@ -193,7 +203,7 @@
     "campaign_urls": [
       "https://www.sanchez2025.nyc"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Amanda C. Farías",
@@ -204,7 +214,7 @@
     "campaign_urls": [
       "https://www.amandafarias.nyc"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Vickie Paladino",
@@ -215,7 +225,7 @@
     "campaign_urls": [
       "https://www.vickiefornyc.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Sandra Ung",
@@ -223,7 +233,10 @@
     "district": 20,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://sandrafornewyork.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Shanel Thomas-Henry",
@@ -234,7 +247,7 @@
     "campaign_urls": [
       "https://www.shanelforcouncil.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Tiffany L. Cabán",
@@ -245,7 +258,7 @@
     "campaign_urls": [
       "https://www.cabanforqueens.com/issues/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Linda Lee",
@@ -256,7 +269,7 @@
     "campaign_urls": [
       "https://lindaleefornyc.com/issues"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "James F. Gennaro",
@@ -267,7 +280,7 @@
     "campaign_urls": [
       "https://gennarofornewyork.com/issues/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Shekar Krishnan",
@@ -275,7 +288,10 @@
     "district": 25,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "http://voteshekar.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Julie Won",
@@ -286,7 +302,7 @@
     "campaign_urls": [
       "https://www.juliewon.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Nantasha M. Williams",
@@ -297,7 +313,7 @@
     "campaign_urls": [
       "https://www.nantashawilliams.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Ty Hankerson",
@@ -308,7 +324,7 @@
     "campaign_urls": [
       "https://www.tyhankerson.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Lynn C. Schulman",
@@ -319,7 +335,7 @@
     "campaign_urls": [
       "https://lynnschulman.com/issues"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Phil Wong",
@@ -327,8 +343,10 @@
     "district": 30,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": [
+      "https://philwong2025.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Selvena N. Brooks-Powers",
@@ -336,8 +354,7 @@
     "district": 31,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Joann Ariola",
@@ -345,8 +362,7 @@
     "district": 32,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Lincoln Restler",
@@ -357,7 +373,7 @@
     "campaign_urls": [
       "https://lincolnforcouncil.com/issues"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Jennifer Gutiérrez",
@@ -365,8 +381,7 @@
     "district": 34,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Crystal Hudson",
@@ -377,7 +392,7 @@
     "campaign_urls": [
       "https://www.crystalforbk.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Chi A. Ossé",
@@ -385,8 +400,7 @@
     "district": 36,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Sandy Nurse",
@@ -394,8 +408,7 @@
     "district": 37,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Alexa Avilés",
@@ -406,7 +419,7 @@
     "campaign_urls": [
       "https://www.alexaforcouncil.com/platform"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Shahana K. Hanif",
@@ -414,7 +427,10 @@
     "district": 39,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": []
+    "campaign_urls": [
+      "https://www.shahanafrombk.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Rita C. Joseph",
@@ -425,7 +441,7 @@
     "campaign_urls": [
       "https://www.ritajoseph.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Darlene Mealy",
@@ -433,8 +449,7 @@
     "district": 41,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Chris Banks",
@@ -445,7 +460,8 @@
     "campaign_urls": [
       "https://www.voteforchrisbanks.com"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race",
+    "campaign_urls_note": "archived page (2025-10-12) still shows his 2023 campaign content"
   },
   {
     "name": "Susan Zhuang",
@@ -453,8 +469,7 @@
     "district": 43,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Simcha Felder",
@@ -462,8 +477,7 @@
     "district": 44,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Farah N. Louis",
@@ -474,7 +488,7 @@
     "campaign_urls": [
       "https://www.farahlouis.com/policies"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Mercedes Narcisse",
@@ -493,7 +507,7 @@
     "campaign_urls": [
       "https://www.kaylaforcouncil.com/"
     ],
-    "campaign_urls_unverified": true
+    "campaign_urls_checked": "2026-11-10: the last archived copy before Election Day names the member and the Council race"
   },
   {
     "name": "Inna Vernikov",
@@ -509,8 +523,7 @@
     "district": 49,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "David M. Carr",
@@ -518,8 +531,7 @@
     "district": 50,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": []
   },
   {
     "name": "Frank Morano",
@@ -527,7 +539,9 @@
     "district": 51,
     "term_start": "2026-01-01",
     "term_end": "2029-12-31",
-    "campaign_urls": [],
-    "campaign_urls_unverified": true
+    "campaign_urls": [
+      "http://moranoforcouncil.com/"
+    ],
+    "campaign_urls_checked": "2026-11-10: found via the member's Wikipedia page; the last archived copy before Election Day names the member and the Council race"
   }
 ]

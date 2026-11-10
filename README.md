@@ -1,4 +1,4 @@
-# Promise Tracker NYC
+# Promises, Kept? (Promise Tracker NYC)
 
 **Did the officials New York elected in 2025 do what they said they would?** Ask about a promise,
 and a team of research agents checks it against the record, in three layers:
@@ -69,9 +69,9 @@ The page uses `GET /run?question=…&session_id=…`, which runs the same resear
 | Layer | Source | In the repo / how it's queried | Build or refresh |
 |---|---|---|---|
 | Who's in scope | NYC Open Data [City Council Members](https://data.cityofnewyork.us/d/uvw5-9znb) + the mayor | `data/officials.json` | `uv run offline/build_officials.py` (`--discover` suggests campaign sites with Gemini + Google Search, kept only if archived before Election Day; flagged `campaign_urls_unverified`) |
-| Promised | Campaign sites via the [Wayback CDX API](https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server) (last copy before 2025-11-04), incl. policy subpages found in the archive index | `data/promises.jsonl`: one promise per line with exact quote, category, specific/vague flag, archived URL, snapshot date | `uv run offline/build_promises.py [name]`. Gemini extracts promises. **Any promise whose quote isn't found verbatim in the page is dropped.** Set `hand_checked: true` on reviewed lines to keep them across rebuilds. |
+| Promised | Campaign sites via the [Wayback CDX API](https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server) (last copy before each official's election: 2025-11-04, or 2026-04-28 for Carl Wilson), incl. policy subpages found in the archive index. Sites come from the roster's `--discover` step and members' Wikipedia pages, each checked against its archived copy | `data/promises.jsonl`: 879 promises from 33 officials, one per line with exact quote, category, specific/vague flag, archived URL, snapshot date | `uv run offline/build_promises.py [name]`. Gemini extracts promises. **Any promise whose quote isn't found verbatim in the page is dropped.** Set `hand_checked: true` on reviewed lines to keep them across rebuilds. |
 | Promised | Mayor's press releases / executive orders, CFB voter guide | Live: `fetch_page` (official and archival sites only) | — |
-| Did | NYC Council [Legistar Web API](https://council.nyc.gov/legislation/api/) | `data/legistar.duckdb` snapshot (bills, sponsors, votes since 2026-01-01) + live API for newer bills | `uv run offline/build_legistar.py` (needs `LEGISTAR_TOKEN`) |
+| Did | NYC Council legislation from [Legistar](https://legistar.council.nyc.gov/Legislation.aspx), via [jehiah/nyc_legislation](https://github.com/jehiah/nyc_legislation), a public mirror of the Legistar API that syncs every few hours (it powers [intro.nyc](https://intro.nyc)) | `data/legistar.duckdb`: 1,868 bills and resolutions introduced since 2026-01-01, 12,527 sponsorships and 17,363 roll-call votes. Every bill links to its official Legistar page | `uv run offline/build_legistar_mirror.py` (no token). With a `LEGISTAR_TOKEN`, `build_legistar.py` builds the same file from the API directly |
 | Did | Council discretionary funding, FY2027: [Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf) of the adopted budget (PDF, 497 pages) | `data/funding/schedule_c_fy2027.csv.gz`: 9,987 awards, $655M, 163 initiatives, with member, district and a link to the PDF page, queried with DuckDB | `uv run offline/build_schedule_c.py [pdf-url]` |
 | Did | NYC Open Data [Council Discretionary Funding](https://data.cityofnewyork.us/d/4d7f-74pe), FY2009–FY2021 | `data/funding/discretionary_fy2009_2021.csv.gz`, same columns, so both files are searched together | `uv run offline/build_funding.py` |
 | Happened | NYC Open Data (any dataset: housing production, 311, parks, …) | Live: Socrata catalog + SoQL (`search_datasets`, `query_open_data`) | — (`SOCRATA_APP_TOKEN` optional) |
@@ -82,11 +82,11 @@ All shipped data is committed (largest file ~10 MB gzipped), so the Cloud Run de
 
 ### Known gaps (the agent says so when they matter)
 
-- **Legistar token:** the Council emails it by hand. Until `LEGISTAR_TOKEN` is set (locally in `.env`, or on Cloud Run as a variable) and `build_legistar.py` has run, the legislation researcher is disabled and reports say bills and votes couldn't be checked.
+- **Legislation is a snapshot:** `data/legistar.duckdb` is as of its build date (shown in every result). Rebuild it with `build_legistar_mirror.py` before a demo. The official Legistar API needs a token the Council emails by hand; the mirror stands in for it, and `search_legislation_live` only works once a token is set.
 - **Discretionary funding** has FY2027 (this Council's first budget) and FY2009–FY2021. There's nothing for FY2022–FY2026: FY2026 was the previous Council's budget. Schedule C lists awards designated at adoption, so initiatives the Council designates later ("post-adoption", e.g. Swim Safety) aren't in it.
 - **Checkbook NYC** sits behind bot protection that can block bursts. Requests go one at a time, and a block is reported as "unavailable", not as "no spending". Contracts can be searched by agency and purpose, but not by vendor name: the API only takes vendor codes, so vendor questions go through payments (`kind='spending'`).
 - **Special elections:** NYC Open Data's roster doesn't list Carl Wilson yet. He won District 3's special election on 2026-04-28 after Erik Bottcher left office ([City & State](https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/)), so `build_officials.py` adds him from a short `SUPPLEMENT` list. His term start there is the election date: his swearing-in date isn't confirmed.
-- **Promise corpus:** the mayor's archived platform and policy pages are built (56 promises, 32 specific). `--discover` found archived campaign sites for 29 of the 51 Council members (`campaign_urls_unverified: true` in `data/officials.json`). Check them, then run `build_promises.py` to add their promises.
+- **Promise corpus:** 879 promises (366 flagged specific) from the mayor and 32 of the 51 Council members in office. Each member's campaign site was checked: the last archived copy before Election Day had to name the member and the Council race. That check rejected four Wikipedia-listed domains that now host spam or unrelated content. Not covered: 15 members with no archived 2025 campaign site (some, like Chi Ossé and Sandy Nurse, ran without one), and 4 whose archived pages are JavaScript shells or list no promises (Menin, Aldebol, Farías, Gennaro). For them the agent falls back to news search and says so. 188 promises come from pages last archived before 2025 (an earlier campaign); the tool flags them and the agent gives the date. `quote` is checked word for word against the page; the one-line `promise`, `category` and `specific` flag are Gemini's reading of it.
 - **Matching promises to evidence** is the hard part. When no dataset measures a promise, the outcomes researcher says so instead of stretching a loosely related one.
 
 ## Sample queries
@@ -99,164 +99,137 @@ Each sample was run with `uv run offline/run_samples.py`: the agent, and the sam
 
 **What the tools add:** The baseline doesn't know Mamdani won. It calls him an Assemblymember and candidate and attributes the 200,000 figure to de Blasio. The agent quotes the archived promise, finds the May 2026 "Block by Block" plan, and checks starts against HPD data.
 
-<details><summary><b>Agent's answer</b> (report, 81 s, 13 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news))</summary>
-
----
-
-#### Promise 1: Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.
+<details><summary><b>Agent's answer</b> (report, 66 s, 24 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news), Researcher 3 (legislation), Researcher 4 (news))</summary>
 
 **In progress**
-Mayor Mamdani released a 10-year housing blueprint setting this target and has started construction on 11,585 affordable units, though this is early in the 10-year timeline ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
+Mayor Mamdani has released a 10-year housing plan, committed initial capital funding, and initiated zoning fast-tracks, but early construction and financing rates are currently below the pace required to meet the 10-year target.
 
-#### What they promised
-"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
+### What they promised
+During his campaign, Zohran Mamdani promised that his administration would "construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families" [https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york]. He also pledged to "triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years" [https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york].
 
-#### What they did
-In May 2026, Mayor Mamdani and Deputy Mayor Leila Bozorg released "Block by Block: The Housing Plan for a New Era," which outlines the goal to build 200,000 new affordable homes over the next decade ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). The plan aims to scale annual production from 14,000 new homes in fiscal year 2027 to over 21,000 new homes annually by fiscal year 2031 ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)). On October 1, 2026, the administration fast-tracked 12 community districts to advance this initiative ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/10/mamdani-administration-puts-12-neighborhoods-on-fast-track-for-a)).
+### What they did
+In May 2026, Mayor Mamdani released a housing plan titled *Block by Block: The Housing Plan for a New Era*, which outlines a target to build 200,000 new affordable homes and preserve another 200,000 existing affordable homes over the next decade [https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n]. This 10-year plan is backed by a capital commitment of $22 billion over its first five years [https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n]. In October 2026, the administration placed 12 community districts on a fast track for zoning updates to accelerate affordable housing production [https://www.nyc.gov/mayors-office/news/2026/10/mamdani-administration-puts-12-neighborhoods-on-fast-track-for-a].
 
-#### What happened
-Housing Preservation and Development (HPD) records show that 11,585 affordable units have been started across 539 projects since January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). This rate is below the preceding baseline year of 2025, when 29,277 units were started ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). Analysts noted that hitting the 10-year goal of 200,000 new and 200,000 preserved homes requires maintaining a consistent pace of 10,000 new and 10,000 preserved units every six months ([City Limits](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)). However, the administration's plan is scheduled to scale up over time rather than starting at that peak rate ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
----
-
-#### Promise 2: Invest $100 billion over 10 years to provide housing for families earning under $70,000 a year.
-
-**In progress**
-The administration backed its 10-year housing blueprint with a $22 billion capital investment over the first five years, though exact spending data from Checkbook NYC is currently unavailable ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [Checkbook NYC](https://www.checkbooknyc.com/)).
-
-#### What they promised
-"This $100 billion dollar commitment over 10 years will once again make New York City a leader in providing homes for families who earn less than $70,000 a year—the median income for renters in New York—and ensure that our City’s resources are used to provide jobs with safety and dignity." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
-
-#### What they did
-The Mamdani administration backed its 10-year blueprint with a capital investment of $22 billion in housing over its first five years ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). The plan dedicates 30% of the 200,000 new affordable homes to extremely low-income households and 20% to very low-income residents ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
-#### What happened
-Checkbook NYC spending and contract data for HPD is currently unavailable to query due to a temporary access blockage, so the exact amount spent so far under this administration cannot be verified ([Checkbook NYC](https://www.checkbooknyc.com/)). This indicates a lack of available data rather than confirming that no spending occurred ([Checkbook NYC](https://www.checkbooknyc.com/)).
-
----
-
-#### Promise 3: Construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families.
-
-**In progress**
-The administration has established its 10-year plan for building 200,000 new homes and has completed or started several thousand units, although it is early in the 10-year timeline ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n), [NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
-
-#### What they promised
-"A Mamdani administration will construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families." ([https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york), November 4, 2025).
-
-#### What they did
-Mayor Mamdani released "Block by Block: The Housing Plan for a New Era," a 10-year housing blueprint setting a target to build 200,000 new affordable homes ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)). This plan scales up annual production over several years to reach its decade-long goals ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).
-
-#### What happened
-The HPD dataset records 11,585 affordable units started and 15,660 affordable units completed across projects since January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)). This is lower than the previous baseline year of 2025, which saw 29,277 starts and 25,697 completions ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).
+### What happened
+During the first six months of 2026, the city financed 12,491 affordable homes, which included 6,632 new units, 4,951 preserved units, and 908 NYCHA PACT units [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. This represented the lowest six-month production total since 2022 [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. Analysts noted that to achieve the 10-year goal of 200,000 new homes, the administration must average 10,000 new units every six months [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/]. Additionally, from January 1 through September 30, 2026, the Department of Housing Preservation and Development recorded 11,585 affordable housing units with a project start date, compared to 29,277 units in the full year of 2025 [https://data.cityofnewyork.us/d/hg8x-zxpr]. Housing experts noted that development pipelines take years to move and that early term figures reflect transition periods [https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/].
 
 </details>
 
 <details><summary><b>No-tools baseline's answer</b></summary>
 
-It appears there is a slight misconception in your question: **Zohran Mamdani is not currently the Mayor.** 
+To answer your question, it is first important to clarify a key detail: **Zohran Mamdani is not the Mayor of New York City.** 
 
-Mamdani is a New York State Assemblymember representing District 36 in Astoria, Queens. In October 2024, he announced his candidacy to run for Mayor of New York City in the June 2025 Democratic primary. 
+He is currently a New York State Assemblymember representing Astoria, Queens, and is a candidate running in the June 2025 Democratic primary for Mayor of New York City. Because he is not in office, he does not have an active mayoral administration or a track record of municipal building projects to evaluate.
 
-Because he is a candidate and does not hold the office of mayor, **he does not have an active administration or municipal track record of building housing.** 
+However, housing is the cornerstone of Mamdani’s mayoral campaign. Here is how his housing platform and the "200,000 homes" figure align with New York City's political landscape:
 
-However, his **campaign platform** focuses heavily on housing reform. Here is what we know about his housing proposals and how they relate to large-scale affordable housing goals:
+### 1. The "200,000 Affordable Homes" Target (A Previous Mayor's Plan)
+The specific goal of building or preserving **200,000 affordable homes** was the signature housing policy of former NYC Mayor **Bill de Blasio**. 
+* De Blasio launched his "Housing New York" plan in 2014 with the goal of building or preserving 200,000 affordable units over 10 years (a goal he later accelerated to 300,000 units by 2026). 
+* Current Mayor **Eric Adams** has set a different "moonshot" goal of facilitating the construction of **500,000 new homes** over a decade through his "City of Yes" zoning text amendments.
 
-#### 1. The Platform: "Social Housing"
-As a member of the Democratic Socialists of America (DSA), Mamdani’s housing platform rejects the traditional private-developer-led model of affordable housing. Instead, he campaigns on a **social housing** model. This involves:
-*   Creating a city- or state-run authority to acquire land and build permanently affordable, publicly owned, and tenant-controlled housing.
-*   Moving away from relying on tax incentives (like the former 421-a or the newer 485-x programs) to entice private developers to build a small percentage of "affordable" units in luxury buildings.
-*   Implementing universal rent control and stronger tenant protections.
+### 2. Zohran Mamdani's Housing Platform
+As a democratic socialist, Mamdani’s mayoral platform rejects the traditional developer-subsidy model used by previous mayors to build affordable housing. Instead of relying on private developers to build "affordable" units in exchange for tax breaks, Mamdani’s platform focuses on:
+* **Social Housing:** Creating publicly funded, permanently affordable, and tenant-controlled housing.
+* **Rent Freezes:** Utilizing the Rent Guidelines Board to implement rent freezes for the city’s roughly 1 million rent-stabilized apartments.
+* **Fully Funding NYCHA:** Stripping city resources from other sectors to heavily invest in repairing the New York City Housing Authority's public housing stock.
+* **Universal Tenant Protections:** Strengthening eviction protections and expanding the right to counsel for tenants facing eviction.
 
-#### 2. Where does the "200,000" figure come from?
-While Mamdani’s specific campaign documents will outline his exact numerical targets as the 2025 race progresses, the target of building or preserving hundreds of thousands of units of social housing is a common benchmark for the progressive coalitions supporting him. 
-*   For example, state-level progressive coalitions (which Mamdani has championed in the Assembly) have pushed for a **Social Housing Development Authority** to construct and preserve hundreds of thousands of green, deeply affordable homes across New York State over a decade.
-
-#### 3. The Current Mayor's Housing Track Record
-If you are thinking of the current administration’s housing targets, that belongs to **Mayor Eric Adams**:
-*   In late 2022, Mayor Adams announced a "moonshot" goal of building **500,000 new homes** over a decade (the "Get Stuff Built" initiative).
-*   **Is Adams on track?** Most housing policy experts and industry trackers note that NYC is currently **not on track** to hit Adams' 500,000-home goal. High interest rates, the expiration of key tax incentives, and bureaucratic delays have slowed housing starts. To reach 500,000 homes in 10 years, the city needs to build roughly 50,000 units a year, but recent years have seen new housing permits hover closer to 11,000 to 16,000 annually. Adams has championed a major zoning reform package called "City of Yes for Housing Opportunity" to try and accelerate this pace.
+### Summary
+Because Mamdani is a candidate and not the sitting mayor, he is not "on track" to build any municipal housing units yet. If he is elected in 2025, his approach to housing will likely focus on rent control and public/social housing acquisition rather than the traditional private-developer-led "affordable housing" targets set by Mayors de Blasio and Adams.
 
 </details>
 
-### 2. Which of Mayor Mamdani's housing promises are specific enough to check against data?
+### 2. What has Council Member Julie Won done about her housing promises?
 
-**Expected answer and source:** The promises flagged `"specific": true` that match "housing" in `data/promises.jsonl` (28 of the mayor's 56). Examples: 200,000 new affordable homes over 10 years; $100 billion over 10 years for families under $70,000; $70 billion in new capital in the Ten-Year Capital Plan; double fines for hazardous violations and triple them for immediately hazardous ones; a 78°F indoor cooling standard when it's 82°F or hotter outside. Each comes from an archived campaign page with an exact quote.
+**Expected answer and source:** Mostly **In progress** or **No action found**, promise by promise. Her promises are on file from her campaign site (`data/promises.jsonl`; some pages were last archived in 2021, so the report should say they're from her earlier campaign). From `data/legistar.duckdb` (tables `matters`, `sponsors`): this term she co-sponsored Int 0839-2026 (permanent Certification of No Harassment, **Enacted**), Int 1015-2026 (**Enacted**), Int 0905-2026 (first opportunity for qualified nonprofits to buy, **Enacted**, at the Mayor's desk), and Int 0650-2026 and Int 0059-2026 (both **in committee**). She sponsored no bill this term that mentions NYCHA, and her only "task force" bill is Int 0124-2026, about e-bikes and street design. From `data/funding/schedule_c_fy2027.csv.gz`: FY2027 awards of $20,000 to the Queensbridge Houses Tenants Association and $15,000 each to the Woodside Houses Tenants Association and the Ravenswood Residents Association ([Schedule C, pp. 17–18](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=17)).
 
-**What the tools add:** The baseline again treats him as a candidate and lists promises from memory (rent freeze, Right to Counsel) with no sources and no dates. The agent answers from the archived corpus, quote-verified, with a link for each promise.
+**What the tools add:** The baseline knows her first term (the 2022 Innovation QNS deal) but nothing from this term: no 2026 bills, votes or budget awards, and no sources. The agent quotes the archived promises with their dates, checks each against her bills and their status in Legistar and her FY2027 awards, and says "No action found" where the record is silent rather than guessing.
 
-<details><summary><b>Agent's answer</b> (report, 70 s, 2 tool calls by Lead)</summary>
+<details><summary><b>Agent's answer</b> (report, 107 s, 27 tool calls by Lead, Researcher 1 (legislation), Researcher 2 (legislation), Researcher 3 (legislation), Researcher 4 (news), Researcher 5 (news), Researcher 6 (outcomes))</summary>
 
-* Mayor Zohran Mamdani promised to triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to fast-track 100% affordable developments, reducing approval times for projects like those at West 108th Street, the Inwood library, and the Greenpoint Hospital site [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to invest $100 billion over 10 years to provide housing for families earning under $70,000 a year [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to construct 200,000 new affordable homes over 10 years for low-income households, seniors, and working families [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to significantly expand the Senior Affordable Rental Apartments (SARA) program to produce more low-income housing for seniors [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to significantly expand the Extremely Low and Low-Income Affordability (ELLA) program to build housing for families earning under $72,000 [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to expand HRA's Master Lease Program to pool rental assistance programs to create subsidized housing [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to drop lawsuits against CityFHEPS expansion and ensure the program's expansion proceeds as scheduled under City Law [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to double capital investments in NYCHA renovations, develop housing on NYCHA parking lots, and use City subsidies directly for upgrades [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to use City capital to build new affordable, publicly-controlled housing on NYCHA land [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to lobby the state government in Albany to establish an annual capital commitment to NYCHA [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to fully fund and staff the operating budgets of housing agencies including HPD, DCP, and NYCHA [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to direct the Office of Management and Budget to avoid bottlenecking development pipelines and city services [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to lobby state and federal governments to raise the city's public debt ceiling and remove volume caps on affordable housing bonds [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to allocate $70 billion in new capital via municipal bonds in the Ten-Year Capital Plan for affordable housing [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to pursue a Comprehensive City Plan to direct growth, housing development, and equity [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to increase zoned capacity to allow mixed-income and affordable housing in neighborhoods historically left out of zoning goals, including areas excluded from City of Yes [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to lobby in Albany to expand rent stabilization rules to cover all new housing production [(Source)](https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york).
-* He promised to rebuild the Mayor’s Office to Protect Tenants to safeguard New York City renters [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to coordinate housing code enforcement across city agencies under the Mayor's Office to Protect Tenants [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to create a centralized, user-friendly website portal for tracking housing violations and fines [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to double the fines for hazardous housing violations and triple them for immediately hazardous violations [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to ensure outstanding and future housing violation fines are actually collected [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to update the Housing Maintenance Code by 2025 to make failing to provide adequate cooling during summer a Class C violation [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to require building owners to maintain indoor temperatures at or below 78°F when it is 82°F or hotter outdoors [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to double the capacity of the Alternative Enforcement Program and expand the Office of Special Enforcement [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to restore funding for the Anti-Harassment Tenant Protection program [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
-* He promised to fully fund the Neighborhood Pillars program at the level secured by the City Council [(Source)](https://web.archive.org/web/20251102190503/https://www.zohranfornyc.com/policies/protecting-new-yorks-tenants).
+### Promise 1: Comprehensive Planning in District 26
+
+**In progress**  
+Council Member Won initiated a community planning process in District 26 and approved the One Long Island City Neighborhood Plan, which has active timelines extending through 2033 ([https://council.nyc.gov/julie-won/one-lic/](https://council.nyc.gov/julie-won/one-lic/)).
+
+*   **What they promised**: "Julie will bring Comprehensive Planning to our neighborhood, and put an end to the “spot rezonings” that pit our communities against each other." ([https://web.archive.org/web/20251006130400/https://www.juliewon.com/](https://web.archive.org/web/20251006130400/https://www.juliewon.com/), snapshot from October 6, 2025).
+*   **What they did**: On October 10, 2023, Council Member Won announced the launch of holistic community planning processes in District 26, including the *One Long Island City* (OneLIC) study and planning corridors for Astoria, Sunnyside, and Woodside ([https://council.nyc.gov/julie-won/2023/10/10/council-member-julie-won-announces-comprehensive-community-planning-for-district-26/](https://council.nyc.gov/julie-won/2023/10/10/council-member-julie-won-announces-comprehensive-community-planning-for-district-26/)). The City Council and Won unanimously approved the OneLIC Neighborhood Plan on November 12, 2025 ([https://council.nyc.gov/julie-won/one-lic/](https://council.nyc.gov/julie-won/one-lic/)). This 54-block rezoning across Hunters Point and Dutch Kills is projected to yield 14,700 new housing units, including approximately 4,350 permanently affordable units ([https://www.akerman.com/en/perspectives/new-york-city-council-approves-the-long-island-city-neighborhood-plan.html](https://www.akerman.com/en/perspectives/new-york-city-council-approves-the-long-island-city-neighborhood-plan.html)). In a November 5, 2026 interview, Won highlighted that she approved over 15,000 units of housing under major rezonings in her district during her tenure ([https://www.youtube.com/watch?v=V6zn6Q9-EwU](https://www.youtube.com/watch?v=V6zn6Q9-EwU)). 
+*   **What happened**: Following the approval, the Pratt Center announced the facilitation of a "OneLIC Oversight Task Force" to monitor city agency accountability and capital commitments ([https://prattcenter.net/our_work/onelic](https://prattcenter.net/our_work/onelic)). While no bills sponsored by Won in 2026 matched "comprehensive planning", "spot rezoning", or "rezoning", the OneLIC project is progressing on its multi-year schedule. Under the approved plan, the selection of a design consultant for waterfront elements was scheduled for June 2026, with subsequent design, permitting, and bidding scheduled to begin by June 2028, and construction targeted for completion by 2033 ([https://council.nyc.gov/julie-won/one-lic/](https://council.nyc.gov/julie-won/one-lic/)). 
+
+---
+
+### Promise 2: $2 Billion Annual Investment and NYCHA Audit
+
+**No action found**  
+No legislation was found showing Council Member Won sponsored or advocated for a $2 billion annual investment in NYCHA or an operational audit of the agency. 
+
+*   **What they promised**: "Julie will push for $2 billion annual investment in the maintenance and rehabilitation of New York public housing along with an audit and overhaul of NYCHA operations and management that puts residents and families first" ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues)). This promise comes from her earlier 2021 campaign website ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues), snapshot from July 28, 2021).
+*   **What they did**: On June 30, 2026, Won announced that the City Council secured funding for NYCHA and affordable housing in the adopted city budget ([https://council.nyc.gov/julie-won/budget/](https://council.nyc.gov/julie-won/budget/)). In the FY 2027 adopted budget, Won directed discretionary funding of $20,000 to the Queensbridge Houses Tenants Association, $15,000 to the Woodside Houses Tenants Association, and $15,000 to the Ravenswood Residents Association ([https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=17](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=17)). She also directed $10,000 to the East River Development Alliance for the Urban Upbound NYCHA Program ([https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=376](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=376)) and $22,000 to Woodside on the Move for tenant advocacy ([https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=451](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=451)). However, no legislation matching "NYCHA" or "audit" was sponsored by Won, and no evidence was found in budget records of her securing or pushing for a $2 billion allocation.
+*   **What happened**: The findings contain no information about an audit or overhaul of NYCHA operations.
+
+---
+
+### Promise 3: Housing Discrimination Task Force
+
+**No action found**  
+No bills or resolutions to establish a housing discrimination task force were found sponsored by Council Member Won in the legislative records.
+
+*   **What they promised**: "Additionally, she will join with other community leaders and council members to establish a city-wide task force on housing descrimination to evaluate the impact of decades of racist housing policy and sponsor legislation based on their recommendations" ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues)). This promise comes from her earlier 2021 campaign website ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues), snapshot from July 28, 2021).
+*   **What they did**: Won sponsored several other housing-related bills, such as Int 1015-2026, but none of these proposed a housing discrimination task force ([https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79329&GUID=D2DAB1EB-1A6B-45F8-9CBD-921DE95B7F1E](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79329&GUID=D2DAB1EB-1A6B-45F8-9CBD-921DE95B7F1E)). Her only sponsored "task force" legislation in 2026 was Int 0124-2026, which relates to street design, infrastructure, and electric bicycles ([https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77393&GUID=CEAD57AE-7764-46EE-B72A-25B6DF666B80](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77393&GUID=CEAD57AE-7764-46EE-B72A-25B6DF666B80)).
+*   **What happened**: The findings contain no information regarding the creation or activity of a city-wide housing discrimination task force.
+
+---
+
+### Promise 4: Arts Spaces Property Tax Credit and Zoning
+
+**No action found**  
+No evidence was found of legislation sponsored by Council Member Won to establish a property tax credit or eliminate zoning barriers for arts spaces.
+
+*   **What they promised**: "Julie will prioritize the use of public land for community arts centers by eliminating zoning barriers that inhibit the construction of mixed use spaces for hybrid residential and artistic development, and by establishing a property tax credit for arts spaces that operate within a half mile of subsidized or public housing" ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues)). This promise comes from her earlier 2021 campaign website ([https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues](https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues), snapshot from July 28, 2021).
+*   **What they did**: The findings show no direct legislation sponsored by Won to establish a tax credit or alter zoning specifically for mixed-use arts centers. Separately, New York City lawmakers introduced a bill in November 2025 to allow housing programs to favor working artists under city fair-housing laws ([https://www.urgentmatter.press/housing-programs-could-give-preference-to-artists-under-nyc-council-bill/](https://www.urgentmatter.press/housing-programs-could-give-preference-to-artists-under-nyc-council-bill/)). 
+*   **What happened**: A February 2026 report recommended zoning standards and set-asides to help secure artist workspace and housing ([https://policycommons.net/artifacts/42939514/integrating-artists-into-nycs-affordable-housing-strategy/43838566/](https://policycommons.net/artifacts/42939514/integrating-artists-into-nycs-affordable-housing-strategy/43838566/)). Additionally, the Public Housing Community Fund launched the "From Roots to Arts" program in April 2024, funding artist residencies at NYCHA campuses—including Astoria Houses in Won't district—through 2026 ([https://citylimits.org/new-program-seeks-nycha-artists-in-residence-to-help-beautify-public-housing-campuses/](https://citylimits.org/new-program-seeks-nycha-artists-in-residence-to-help-beautify-public-housing-campuses/)). No further outcomes regarding Won's proposed property tax credit or public land prioritization were found.
 
 </details>
 
 <details><summary><b>No-tools baseline's answer</b></summary>
 
-*Note: As of current records, Zohran Mamdani is a New York State Assembly Member (representing District 36 in Queens) who launched a campaign for Mayor of New York City in the 2025 Democratic primary. Because he is currently a candidate and not yet mayor, these refer to his **mayoral campaign platform promises**. If elected, several of his key housing proposals are highly specific and can be directly measured against municipal data.*
+Since taking office in January 2022 as the representative for New York City Council District 26 (covering Sunnyside, Woodside, Long Island City, and Astoria), Julie Won has made housing a central focus of her legislative and district-level work. Her campaign promised to fight tenant displacement, demand deeply affordable housing from developers, and hold landlords accountable. 
 
-Here are Mamdani’s most specific housing promises and the exact datasets or metrics that can be used to track them:
+Her record on these promises is characterized by high-profile land-use negotiations, legislative advocacy for tenant protections, and significant debate from both progressive and pro-housing groups.
+
+Here is a breakdown of what Council Member Julie Won has done regarding her housing promises:
 
 ---
 
-#### 1. Enacting a Rent Freeze on Rent-Stabilized Apartments
-* **The Promise:** Mamdani has committed to appointing members to the NYC Rent Guidelines Board (RGB) who are committed to voting for a **0% rent increase (a rent freeze)** on the city’s approximately 1 million rent-stabilized units. 
-* **How to check against data:** 
-  * **The Data Source:** The annual vote results and final explanatory statements published by the **NYC Rent Guidelines Board (RGB)**. 
-  * **The Metric:** The percentage rate increase authorized for 1-year and 2-year leases. If Mamdani is mayor, any approved increase above 0% on rent-stabilized leases would represent a failure to meet this specific promise.
+### 1. Major Land-Use and Rezoning Negotiations
+In New York City, the local Council Member holds significant power over land-use decisions in their district due to a practice known as "member deference." Won has used this leverage to negotiate for higher percentages of affordable units in private developments.
 
-#### 2. Fully Funding and Enforcing the "Right to Counsel" (RTC)
-* **The Promise:** Though NYC passed a "Right to Counsel" law in 2017 guaranteeing low-income tenants facing eviction a free lawyer, the program has been severely underfunded, leaving many tenants to face housing court alone. Mamdani promises to fully fund the program so that **100% of eligible tenants facing eviction are assigned a lawyer**.
-* **How to check against data:**
-  * **The Data Source:** The **NYC Office of Civil Justice (OCJ) Annual Reports** and housing court records.
-  * **The Metric:** The representation rate of low-income tenants in NYC housing court. Currently, this rate sits well below 100% (often hovering around 35% to 50% due to attorney shortages). A successful implementation would show this metric rising to and sustaining at 100%.
-  * **Budgetary Data:** The **NYC Adopted Budget**, specifically the funding lines allocated to the Human Resources Administration (HRA) for contracted legal services.
+*   **Innovation QNS (Astoria):** This was the most high-profile and controversial housing battle of her first term. The proposed $2 billion, five-block mixed-use development initially offered 25% affordable housing out of 2,800 units. Won opposed the initial plan, demanding 50% affordability and deeper income targets (lower Area Median Income, or AMI, levels). 
+    *   **The Outcome:** After intense negotiations, Won approved a modified plan in November 2022. The final agreement expanded the project to roughly 3,200 units, with **45% (about 1,436 units) designated as affordable**, including 500 units set aside for those earning under 30% of the AMI. It also included a $2 million tenant anti-harassment fund.
+*   **44-01 Northern Boulevard (Long Island City):** For this mixed-use development, Won negotiated with the developers to secure **35% affordable housing** (well above the city’s Mandatory Inclusionary Housing baseline of 25–30%), with a focus on family-sized units.
+*   **Barnett Avenue (Sunnyside):** Won supported a 100% affordable housing development on Barnett Avenue, which provides homes specifically tailored for low-income seniors and working-class families.
 
-#### 3. Direct Public/Social Housing Construction
-* **The Promise:** Mamdani advocates for "social housing"—housing that is publicly owned or under community control and permanently shielded from the private market. He promises to use city funds and city-owned land to construct new social housing rather than relying on private developers and tax breaks (like the state's 485-x/former 421-a programs).
-* **How to check against data:**
-  * **The Data Source:** The **NYC Department of Housing Preservation and Development (HPD) Housing Production Reports** and the **Mayor’s Management Report (MMR)**.
-  * **The Metric:** The number of "new construction starts" classified as publicly owned, municipal, or Community Land Trust (CLT)-run housing, compared to private, market-rate, or public-private partnership developments. 
+### 2. Tenant Protections and Legislative Record
+Won has aligned herself with the progressive wing of the City Council to advocate for tenant rights and housing security:
 
-#### 4. Direct Municipal Funding for NYCHA Repairs
-* **The Promise:** Mamdani has called for massive, direct municipal capital investments into the New York City Housing Authority (NYCHA) to address its estimated $78 billion capital repair backlog, rather than relying on privatization schemes like RAD (Rental Assistance Demonstration) or the NYCHA Preservation Trust.
-* **How to check against data:**
-  * **The Data Source:** The **NYC Capital Commitment Plan** (published by the Office of Management and Budget) and **NYCHA's Physical Needs Assessment (PNA)**.
-  * **The Metric:** The exact dollar amount of New York City capital funds (not federal or state funds) committed and actually spent on NYCHA capital projects annually. Additionally, tracking the reduction in NYCHA's open maintenance backlogs and physical emergency work orders (available via NYCHA’s metrics dashboard).
+*   **Good Cause Eviction:** Won has been an active proponent of statewide "Good Cause Eviction" legislation, which aims to prevent landlords from evicting tenants without a designated legal reason and caps annual rent increases.
+*   **Rental Assistance and Vouchers:** She has voted in favor of expanding the CityFHEPS (Family Homelessness and Eviction Prevention Supplement) housing voucher program to make it easier for low-income New Yorkers to secure and keep housing.
+*   **NYCHA Advocacy:** Won’t’s district includes some of the largest public housing developments in the country, including Queensbridge and Ravenswood Houses. She has consistently lobbied for increased federal and state funding for NYCHA repairs, held resource fairs for public housing residents, and pushed for accountability regarding mold, lead, and heating issues.
+*   **Illegal Eviction Protections:** Won co-sponsored and supported local legislation to crack down on illegal lockouts and tenant harassment by landlords.
 
-#### 5. Banning Tenant-Paid Broker Fees
-* **The Promise:** Mamdani has strongly supported shifting the burden of apartment broker fees from tenants to landlords (similar to the FARE Act debated in the City Council). As mayor, he would be responsible for enforcing such rules.
-* **How to check against data:**
-  * **The Data Source:** **NYC Department of Consumer and Worker Protection (DCWP)** enforcement data and housing market consumer complaint databases.
-  * **The Metric:** The number of investigations, citations, and fines issued by the DCWP to real estate brokerages violating broker fee rules.
+### 3. Perspectives and Criticisms
+Won’s approach to housing has drawn both praise and criticism from various political factions:
+
+*   **Praise for Securing Unprecedented Affordability:** Supporters and housing advocates praised Won for her tenacity during the Innovation QNS negotiations. They argue she successfully forced multi-billion-dollar developers to double their affordable housing commitments, setting a new precedent for private developments in NYC.
+*   **Criticism from the Left (Anti-Gentrification Advocates):** Some progressive activists and local socialist groups criticized Won for ultimately voting "yes" on Innovation QNS. They argued that bringing thousands of market-rate units into a working-class neighborhood would accelerate gentrification and displacement, regardless of the affordable units secured, and felt she compromised on her campaign promise to reject developer-driven rezonings.
+*   **Criticism from Pro-Housing/YIMBY ("Yes In My Backyard") Groups:** Pro-housing groups and some business leaders criticized Won for delaying projects like Innovation QNS during a severe housing shortage. They argued that her combative negotiating style and demands risked killing projects entirely, which would have resulted in zero new housing units being built.
+
+### Summary
+Julie Won has approached her housing promises by acting as a strict gatekeeper for development in her district. Rather than rejecting all private development or accepting standard city baselines, she has used her legislative power to extract historic affordability concessions from developers. While this pragmatic compromise alienated some of her most progressive supporters and frustrated pro-development groups, it resulted in the approval of thousands of new affordable apartments in Western Queens.
 
 </details>
+
 
 ### 3. Did Council Member Lincoln Restler steer discretionary funding to parks in District 33 this year?
 
@@ -331,7 +304,7 @@ Two members, Deepthi Rao (dgr2116) and Lavina Mital (lm4046), with at least one 
 | Owner | Source |
 |---|---|
 | Deepthi Rao (dgr2116) | Promise corpus (Wayback Machine, voter guide): `offline/build_promises.py`, `sources/promises.py` |
-| Deepthi Rao (dgr2116) | Legistar bills and votes: `offline/build_legistar.py`, `sources/legistar.py` |
+| Deepthi Rao (dgr2116) | Legistar bills and votes: `offline/build_legistar_mirror.py` (or `build_legistar.py` with a token), `sources/legistar.py` |
 | Deepthi Rao (dgr2116) | News search and the neutrality Reviewer: `sources/web.py`, `reviewer` in `app.py` |
 | Lavina Mital (lm4046) | NYC Open Data and Checkbook outcomes: `sources/opendata.py`, `sources/checkbook.py` |
 | Lavina Mital (lm4046) | Discretionary funding: `offline/build_funding.py`, `sources/funding.py` |

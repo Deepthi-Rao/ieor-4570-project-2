@@ -51,8 +51,8 @@ def test_links_match_through_url_encoding():
 
 def test_lead_instructions_are_built_per_run(monkeypatch):
     """The date and roster must not be frozen when the server starts."""
-    monkeypatch.setattr(app.time, "strftime", lambda fmt: "2027-03-01")
+    monkeypatch.setattr(app.time, "strftime", lambda fmt: "2026-12-01")
     text = app.lead_instructions(None, app.lead)
-    assert "Today is 2027-03-01" in text
+    assert "Today is 2026-12-01" in text
     assert "District 3: Carl Wilson (elected in a special election, 2026-04-28)" in text
     assert "Erik D. Bottcher (left office 2026-02-03)" in text

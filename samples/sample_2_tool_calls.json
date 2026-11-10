@@ -3,20 +3,242 @@
     "agent": "Lead",
     "name": "get_promises",
     "args": {
-      "specific_only": true,
+      "official": "Julie Won",
       "topic": "housing",
-      "official": "mayor"
+      "specific_only": true
     },
-    "result": "{\"official\": {\"name\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"term_start\": \"2026-01-01\", \"campaign_urls\": [\"https://www.zohranfornyc.com/platform\"]}, \"count\": 28, \"promises\": [{\"promise\": \"Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"quote\": \"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"category\": \"housing\", \"specific\": true, \"target\": \"200,000 new units over 10 years\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\"}, {\"promise\": \"Fast-track 100% affordable developments, reducing approval times for projects like those at West 108th Street, the Inwood library, and the Greenpoint Hospital site.\", \"quote\": \"Any 100% affordable development gets fast-tracked: projects like the 200 deeply affordable units at West 108th Street, the 175 affordable units above the new Inwood library, and the 500 affordable units on the site of the long-vacant Greenpoint Hospital will no longer take years to get approved.\", \"category\": \"housing\", \"specific\": true, \"location\": \"West 108th Street, Inwood library, Greenpoint Hospital\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\"}, {\"promise\": \"Invest $100 billion over 10 years to provide housing for families earning under $70,000 a year.\", \"quote\": \"This $100 billion dollar commitment over 10 years will once again make New York City a leader in providing homes for families who earn less than $70,000 a year—the median income for renters in New York—and ensure that our City’s resources are used to provide jobs with safety and dignity.\", \"category\": \"housing\" ...[truncated]"
+    "result": "{\"official\": {\"name\": \"Julie Won\", \"role\": \"Council Member\", \"district\": 26, \"term_start\": \"2026-01-01\", \"term_end\": \"2029-12-31\", \"campaign_urls\": [\"https://www.juliewon.com\"], \"campaign_urls_checked\": \"2026-11-10: the last archived copy before Election Day names the member and the Council race\"}, \"count\": 4, \"promises\": [{\"promise\": \"Implement Comprehensive Planning in the district to replace developer-driven spot rezonings.\", \"quote\": \"Julie will bring Comprehensive Planning to our neighborhood, and put an end to the “spot rezonings” that pit our communities against each other.\", \"category\": \"housing\", \"specific\": true, \"location\": \"District 26\", \"source_url\": \"https://web.archive.org/web/20251006130400/https://www.juliewon.com/\", \"snapshot_date\": \"2025-10-06\"}, {\"promise\": \"I will advocate for an annual investment of $2 billion in public housing maintenance and rehabilitation alongside an operational audit of NYCHA.\", \"quote\": \"Julie will push for $2 billion annual investment in the maintenance and rehabilitation of New York public housing along with an audit and overhaul of NYCHA operations and management that puts residents and families first.\", \"category\": \"housing\", \"specific\": true, \"location\": \"NYCHA\", \"target\": \"$2 billion annual\", \"source_url\": \"https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues\", \"snapshot_date\": \"2021-07-28\"}, {\"promise\": \"I will work with community leaders and council members to create a city-wide task force focused on housing discrimination.\", \"quote\": \"Additionally, she will join with other community leaders and council members to establish a city-wide task force on housing descrimination to evaluate the impact of decades of racist housing policy and sponsor legislation based on their recommendations.\", \"category\": \"housing\", \"specific\": true, \"source_url\": \"https://web.archive.org/web/20210728144714/https://www.juliewon.com/issues\", \"snapshot_date\": \"2021-07-28\"}, {\"promise\": \"I will establish a property tax ...[truncated]"
   },
   {
     "agent": "Lead",
-    "name": "get_promises",
+    "name": "research",
     "args": {
-      "topic": "housing",
-      "official": "mayor",
-      "specific_only": false
+      "task": "Check if Julie Won introduced/voted on legislation or took actions regarding Comprehensive Planning or ending spot rezonings in District 26 in 2026.",
+      "kind": "legislation"
     },
-    "result": "{\"official\": {\"name\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"term_start\": \"2026-01-01\", \"campaign_urls\": [\"https://www.zohranfornyc.com/platform\"]}, \"count\": 42, \"promises\": [{\"promise\": \"He will freeze rent prices in the city.\", \"quote\": \"Freeze the rent.\", \"category\": \"housing\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"He will construct more affordable housing.\", \"quote\": \"Building affordable housing.\", \"category\": \"housing\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"He will take strict action against bad landlords.\", \"quote\": \"Cracking down on bad landlords.\", \"category\": \"housing\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"He will support homeowners and put an end to deed theft.\", \"quote\": \"Supporting homeowners and ending deed theft.\", \"category\": \"housing\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"quote\": \"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"category\": \"housing\", \"specific\": true, \"target\": \"200,000 new units over 10 years\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\"}, {\"promise\": \"Fast-track 100% affordable developments, reducing approval times for  ...[truncated]"
+    "result": "* No bills sponsored by Julie Won match \"comprehensive planning\".\n* No bills sponsored by Julie Won match \"spot rezoning\".\n* No bills sponsored by Julie Won match \"rezoning\".\n* Julie Won is a co-sponsor on Int 0580-2026, a bill introduced on 2026-02-12 regarding the planning and implementation of child care ([Int 0580-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77757&GUID=F88623E6-CE3B-4D41-9E45-DF81F2DEC4DC)).\n* Julie Won is a co-sponsor on Int 0359-2026, a bill introduced on 2026-01-29 regarding utilizing city-owned lots for energy storage systems in coordination with the Office of Long-Term Planning and Sustainability ([Int 0359-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77651&GUID=E78635F6-0F84-4F59-9E6B-DE0F54897F89))."
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Check if Julie Won advocated for or sponsored legislation/resolutions for a $2 billion annual investment in NYCHA or an audit of NYCHA in 2026.",
+      "kind": "legislation"
+    },
+    "result": "* No bills sponsored by Julie Won match \"NYCHA\" ([NYC Council Legistar](https://legistar.council.nyc.gov/Legislation.aspx))\n* No bills sponsored by Julie Won match \"audit\" ([NYC Council Legistar](https://legistar.council.nyc.gov/Legislation.aspx))"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Check if Julie Won introduced or sponsored legislation/resolutions to establish a city-wide task force on housing discrimination in 2026.",
+      "kind": "legislation"
+    },
+    "result": "* No legislation or resolutions to establish a city-wide task force on housing discrimination were found sponsored by Julie Won in the 2026 legislative snapshot.\n* A search for bills sponsored by Julie Won with the keyword \"housing\" returned several items, such as [Int 1015-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79329&GUID=D2DAB1EB-1A6B-45F8-9CBD-921DE95B7F1E), [Int 0905-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=78838&GUID=418DDC9E-6DEA-494D-8109-EC2FB9D206C9), [Int 0839-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=78590&GUID=D091EBE0-91FF-48F9-BA1C-924BDA128719), [Int 0589-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77168&GUID=161526D4-C5FB-4109-BDAD-DBEA42FD4819), [Int 0650-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=78120&GUID=B90BC67A-CDB2-4312-A34A-B0386E1DF127), [Int 0527-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77471&GUID=A2E79FB8-D01A-4DD9-A24F-E2322E52D876), [Int 0059-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77210&GUID=4FA071BD-F4E5-4DB6-BEE8-7D522B86D9FE), and [Int 0134-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77430&GUID=803EE12E-0035-4B6C-B2AD-123060443BF7), but none of these establish a housing discrimination task force.\n* A search for \"task force\" legislation sponsored by Julie Won returned only [Int 0124-2026](https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77393&GUID=CEAD57AE-7764-46EE-B72A-25B6DF666B80), which relates to a task force on street design, infrastructure, and electric bicycles."
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Search for news from 2026 regarding Julie Won's positions, statements, or legislative progress on housing promises (Comprehensive Planning, NYCHA funding, housing discrimination task force, zoning for arts spaces).",
+      "kind": "news"
+    },
+    "result": "* On October 10, 2023, Council Member Julie Won announced the launch of holistic community planning processes in District 26, including the *One Long Island City* study and planning corridors for Astoria, Sunnyside, and Woodside ([nyc.gov](https://council.nyc.gov/julie-won/2023/10/10/council-member-julie-won-announces-comprehensive-community-planning-for-district-26/)).\n* In a November 5, 2026 podcast interview, Council Member Won highlighted that she approved over 15,000 units of housing under major rezonings in her district during her tenure ([youtube.com](https://www.youtube.com/watch?v=V6zn6Q9-EwU)).\n* On June 30, 2026, following the adoption of the city budget, Council Member Won announced that the City Council secured funding for NYCHA and affordable housing initiatives, while restoring cuts to critical services ([nyc.gov](https://council.nyc.gov/julie-won/budget/)).\n* In April 2024, the Public Housing Community Fund launched the \"From Roots to Arts\" program backed by a $3 million Mellon Foundation grant, funding artist residencies across five NYCHA campuses through 2026, including Astoria Houses in Queens ([citylimits.org](https://citylimits.org/new-program-seeks-nycha-artists-in-residence-to-help-beautify-public-housing-campuses/)).\n* A February 2026 Center for an Urban Future report examined housing policies for artists in New York City, recommending zoning standards, artist-preference units, and set-asides to help secure workspace and housing ([policycommons.net](https://policycommons.net/artifacts/42939514/integrating-artists-into-nycs-affordable-housing-strategy/43838566/)).\n* In November 2025, New York City lawmakers introduced a bill to allow certain housing programs to give preferences to working artists without conflicting with city fair-housing laws regarding occupational discrimination ([urgentmatter.press](https://www.urgentmatter.press/housing-programs-could-give-preference-to-artists-under-nyc-council-bill/))."
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "housing discrimination"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 2 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "NYCHA"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 1 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "keyword": "comprehensive planning",
+      "sponsor": "Julie Won"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 4 (news)",
+    "name": "web_search",
+    "args": {
+      "query": "Julie Won housing Comprehensive Planning NYCHA funding housing discrimination zoning arts spaces 2026"
+    },
+    "result": "{\"summary\": \"Based on the available news and public records sources, here are the facts reported regarding New York City housing, planning, NYCHA funding, zoning, and arts spaces, keeping each source's information separate:\\n\\n### **Source: Official New York City Government / Council Member Julie Won Communications**\\n* **Dates:** October 10, 2023; June 30, 2026; November 5, 2026 *(podcast interview context)*\\n* **Comprehensive Planning & Zoning:** \\n  * On October 10, 2023, City Council Member Julie Won (District 26, Queens) joined local officials and the Department of City Planning to launch two holistic community planning processes in her district: the *One Long Island City* neighborhood study (aimed at a comprehensive rezoning) and planning for Astoria, Sunnyside, and Woodside corridors. \\n  * In a November 5, 2026 podcast discussion, Council Member Won noted that she approved over 15,000 units of housing under major rezonings in her tenure to help alleviate the housing crisis, emphasizing public-private partnerships and community compromises.\\n* **NYCHA Funding & Budget:**\\n  * According to Council Member Won’s Fiscal Year 2027 budget adoption announcement on June 30, 2026, the City Council successfully passed a budget package that restored mayor-proposed cuts to critical services, specifically securing funding for NYCHA, affordable housing initiatives, cultural institutions, libraries, and parks.\\n\\n### **Source: City Limits**\\n* **Date:** April 29, 2024\\n* **NYCHA Funding & Arts Spaces:**\\n  * The Public Housing Community Fund launched a 20-month program titled *\\\"From Roots to Arts: Celebrating NYCHA's Cultural Heritage,\\\"* backed by a $3 million grant from the Mellon Foundation. \\n  * The program places resident artists within five public housing campuses (King Towers in Harlem, Bushwick Houses in Brooklyn, Astoria Houses in Queens, Richmond Terrace in Staten Island, and Bronx River Houses in the Bronx) to build community connections and bring art spaces/pr ...[truncated]"
+  },
+  {
+    "agent": "Researcher 2 (legislation)",
+    "name": "search_legislation_live",
+    "args": {
+      "sponsor": "Won",
+      "keyword": "NYCHA"
+    },
+    "result": "{\"error\": \"Legistar live API unavailable: LEGISTAR_TOKEN is not set.\", \"how_to_fix\": \"Use the snapshot results only, and say newer bills couldn't be checked.\"}"
+  },
+  {
+    "agent": "Researcher 1 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "spot rezoning"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation_live",
+    "args": {
+      "keyword": "housing discrimination",
+      "sponsor": "Won"
+    },
+    "result": "{\"error\": \"Legistar live API unavailable: LEGISTAR_TOKEN is not set.\", \"how_to_fix\": \"Use the snapshot results only, and say newer bills couldn't be checked.\"}"
+  },
+  {
+    "agent": "Researcher 2 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "housing"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 8, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 8, \"bills\": [{\"matter_id\": 79329, \"file\": \"Int 1015-2026\", \"name\": \"Abatement of taxation for alterations and improvements to certain multiple dwellings.\", \"type\": \"Introduction\", \"status\": \"Enacted\", \"committee\": \"Committee on Housing and Buildings\", \"intro_date\": \"2026-08-13\", \"passed_date\": \"2026-10-24\", \"summary\": \"This bill would extend the J-51 tax abatement for certain alterations or improvements to include projects completed on or after June 30, 2026 and before June 30, 2036. Condos and coops where the average assessed valuation is under $60,000 per dwelling unit (adjusted annually for inflation) would be ...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79329&GUID=D2DAB1EB-1A6B-45F8-9CBD-921DE95B7F1E\", \"prime_sponsor\": \"Pierina Ana Sanchez\", \"sponsor_count\": 32, \"is_prime_sponsor\": false}, {\"matter_id\": 78838, \"file\": \"Int 0905-2026\", \"name\": \"Giving qualified entities a first opportunity to submit a statement of interest and a first opportunity to purchase certain properties.\", \"type\": \"Introduction\", \"status\": \"Enacted (Mayor's Desk for Signature)\", \"committee\": \"Committee on Housing and Buildings\", \"intro_date\": \"2026-05-14\", \"summary\": \"This bill would give certain not-for-profits or joint ventures between not-for-profits and other entities, as certified by the Department of Housing Preservation and Development (“HPD”), a first opportunity to submit a statement of interest in purchasing and a first opportunity to purchase certain r...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=78838&GUID=418DDC9E-6DEA-494D-8109-EC2FB9D206C9\", \"prime_sponsor\": \"Sandy Nurse\", \"sponsor_count\": 33, \"is_prime_sponsor\": false}, {\"matter_id\": 78590, \"file\": \"Int 0839-2026\", \"name\": \"Making the certification of no harassment pilot program ...[truncated]"
+  },
+  {
+    "agent": "Researcher 1 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "keyword": "planning",
+      "sponsor": "Julie Won"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 2, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 2, \"bills\": [{\"matter_id\": 77757, \"file\": \"Int 0580-2026\", \"name\": \"Establishing an office of child care and early childhood education to oversee the planning and implementation of child care for any child who resides in the city at no cost to a parent, stepparent, guardian, or relative of such child.\", \"type\": \"Introduction\", \"status\": \"Enacted\", \"committee\": \"Committee on Education\", \"intro_date\": \"2026-02-12\", \"passed_date\": \"2026-07-30\", \"summary\": \"This bill would create an Office of Child Care and Early Childhood Education (the “Office”) to assist the mayor in planning and implementing child care for any child who resides in the city at no cost to a parent, stepparent, guardian, or relative of such child. The bill would require the Office to ...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77757&GUID=F88623E6-CE3B-4D41-9E45-DF81F2DEC4DC\", \"prime_sponsor\": \"Jennifer Gutiérrez\", \"sponsor_count\": 37, \"is_prime_sponsor\": false}, {\"matter_id\": 77651, \"file\": \"Int 0359-2026\", \"name\": \"Utilizing city-owned lots for energy storage systems.\", \"type\": \"Introduction\", \"status\": \"Committee\", \"committee\": \"Committee on Environmental Protection and Waterfronts\", \"intro_date\": \"2026-01-29\", \"summary\": \"This bill would require the Commissioner of Citywide Administrative Services, in coordination with the Office of Long-Term Planning and Sustainability, to identify city-owned lots suitable for installing energy storage systems, develop a plan to achieve the amount of energy storage capacity specifie...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77651&GUID=E78635F6-0F84-4F59-9E6B-DE0F54897F89\", \"prime_sponsor\": \"Sandy Nurse\", \"sponsor_count\": 25, \"is_prime_sponsor\": false}], \"note\": \"Newest first. Bills introduced after the snapshot date ...[truncated]"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "housing"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 8, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 8, \"bills\": [{\"matter_id\": 79329, \"file\": \"Int 1015-2026\", \"name\": \"Abatement of taxation for alterations and improvements to certain multiple dwellings.\", \"type\": \"Introduction\", \"status\": \"Enacted\", \"committee\": \"Committee on Housing and Buildings\", \"intro_date\": \"2026-08-13\", \"passed_date\": \"2026-10-24\", \"summary\": \"This bill would extend the J-51 tax abatement for certain alterations or improvements to include projects completed on or after June 30, 2026 and before June 30, 2036. Condos and coops where the average assessed valuation is under $60,000 per dwelling unit (adjusted annually for inflation) would be ...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79329&GUID=D2DAB1EB-1A6B-45F8-9CBD-921DE95B7F1E\", \"prime_sponsor\": \"Pierina Ana Sanchez\", \"sponsor_count\": 32, \"is_prime_sponsor\": false}, {\"matter_id\": 78838, \"file\": \"Int 0905-2026\", \"name\": \"Giving qualified entities a first opportunity to submit a statement of interest and a first opportunity to purchase certain properties.\", \"type\": \"Introduction\", \"status\": \"Enacted (Mayor's Desk for Signature)\", \"committee\": \"Committee on Housing and Buildings\", \"intro_date\": \"2026-05-14\", \"summary\": \"This bill would give certain not-for-profits or joint ventures between not-for-profits and other entities, as certified by the Department of Housing Preservation and Development (“HPD”), a first opportunity to submit a statement of interest in purchasing and a first opportunity to purchase certain r...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=78838&GUID=418DDC9E-6DEA-494D-8109-EC2FB9D206C9\", \"prime_sponsor\": \"Sandy Nurse\", \"sponsor_count\": 33, \"is_prime_sponsor\": false}, {\"matter_id\": 78590, \"file\": \"Int 0839-2026\", \"name\": \"Making the certification of no harassment pilot program ...[truncated]"
+  },
+  {
+    "agent": "Researcher 2 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "audit"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 1 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "keyword": "rezoning",
+      "sponsor": "Julie Won"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "Julie Won",
+      "keyword": "task force"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 1, \"bills_as_prime_sponsor\": 0, \"bills_shown\": 1, \"bills\": [{\"matter_id\": 77393, \"file\": \"Int 0124-2026\", \"name\": \"Establishment of a task force to study options for making street design and infrastructure safer in consideration of increased use of electric bicycles and related collisions.\", \"type\": \"Introduction\", \"status\": \"Laid Over in Committee\", \"committee\": \"Committee on Transportation and Infrastructure\", \"intro_date\": \"2026-01-29\", \"summary\": \"This bill would establish a task force to study options for making street design and infrastructure safer for pedestrians, motorists, cyclists, and operators of electric bicycles (also known as e-bikes) in consideration of increased use of electric bicycles and related collisions.\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77393&GUID=CEAD57AE-7764-46EE-B72A-25B6DF666B80\", \"prime_sponsor\": \"Selvena N. Brooks-Powers\", \"sponsor_count\": 14, \"is_prime_sponsor\": false}], \"note\": \"Newest first. Bills introduced after the snapshot date aren't here. Use get_votes for roll calls.\"}"
+  },
+  {
+    "agent": "Researcher 1 (legislation)",
+    "name": "search_legislation_live",
+    "args": {
+      "keyword": "comprehensive planning",
+      "sponsor": "Won"
+    },
+    "result": "{\"error\": \"Legistar live API unavailable: LEGISTAR_TOKEN is not set.\", \"how_to_fix\": \"Use the snapshot results only, and say newer bills couldn't be checked.\"}"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Check news or council releases in 2026 on the progress of the 'One Long Island City' planning study or District 26 comprehensive planning efforts.",
+      "kind": "news"
+    },
+    "result": "* The New York City Council and District 26 Council Member Julie Won unanimously approved the OneLIC Neighborhood Plan on November 12, 2025 ([nyc.gov](https://council.nyc.gov/julie-won/one-lic/)).\n* The 54-block rezoning across Hunters Point and Dutch Kills is projected to yield 14,700 new housing units, including approximately 4,350 permanently affordable units through Mandatory Inclusionary Housing ([akerman.com](https://www.akerman.com/en/perspectives/new-york-city-council-approves-the-long-island-city-neighborhood-plan.html)).\n* The plan incorporates nearly $2 billion in city commitments for capital investments, including funding for 1,300 new school seats and $206 million toward infrastructure improvements at the Queensbridge Houses ([nyc.gov](https://council.nyc.gov/julie-won/one-lic/)).\n* Following the approval, the Pratt Center announced the facilitation of a \"OneLIC Oversight Task Force\" to monitor agency accountability and the timely delivery of these capital commitments ([prattcenter.net](https://prattcenter.net/our_work/onelic)).\n* Projected timelines under the approved agreement scheduled the selection of a design consultant for waterfront elements to take place by June 2026 ([nyc.gov](https://council.nyc.gov/julie-won/one-lic/)).\n* Subsequent design, permitting, and bidding for the waterfront and open space projects are scheduled to begin by June 2028, with construction targeted for completion by 2033 ([nyc.gov](https://council.nyc.gov/julie-won/one-lic/))."
+  },
+  {
+    "agent": "Researcher 5 (news)",
+    "name": "web_search",
+    "args": {
+      "query": "One Long Island City planning study 2026"
+    },
+    "result": "{\"summary\": \"Based on the available news and official records regarding the **One Long Island City (OneLIC)** planning process, the sources provide the following information:\\n\\n* **NYC.gov / City Sources (November 12, 2025 – November 13, 2025):** \\n  * The New York City Council unanimously voted to approve the OneLIC Neighborhood Plan on **November 12, 2025**. \\n  * The plan rezones 54 blocks in Long Island City (focusing on Hunters Point and Dutch Kills).\\n  * It is projected to create roughly 14,700 new housing units—including approximately 4,350 permanently affordable units through Mandatory Inclusionary Housing (MIH)—alongside 3.5 million square feet of commercial/industrial space, 290,000 square feet of community facility uses, and 14,400 jobs.\\n  * The agreement included nearly $2 billion in city investments for infrastructure, including 1,300 new school seats, open space expansions (such as restoring the Queensbridge Baby Park and creating a continuous waterfront access plan), stormwater/sewer upgrades, and $206 million toward Queensbridge Houses.\\n  * Future milestone timelines listed under the plan include selecting a design consultant for waterfront elements by **June 2026**, beginning design and permitting by **June 2028**, and completing construction by **2033**.\\n\\n* **Pratt Center for Community Development (Retrieved/Published post-approval):** \\n  * Confirms that the OneLIC Neighborhood Plan passed on **November 12, 2025**, describing it as the largest neighborhood rezoning in NYC history, bringing nearly 15,000 housing units and $2 billion in city commitments.\\n  * Notes the establishment of a \\\"OneLIC Oversight Task Force\\\" facilitated by the Pratt Center to monitor the timely execution of these commitments with city agencies.\\n\\n* **City Limits (September 3, 2025):** \\n  * Reported on the City Planning Commission's approval of the 54-block rezoning plan on **September 3, 2025**, ahead of its final City Council vote. \\n  * Stated the plan aims to s ...[truncated]"
+  },
+  {
+    "agent": "Researcher 5 (news)",
+    "name": "web_search",
+    "args": {
+      "query": "One Long Island City 2026 progress Julie Won planning study"
+    },
+    "result": "{\"summary\": \"Based on the sources retrieved, here are the reported facts regarding the One Long Island City (OneLIC) neighborhood plan, planning study, and progress involving Council Member Julie Won, with the specific dates provided by each source:\\n\\n### **Source: NYC.gov (Official Project Documentation & Timeline)**\\n* **April 21, 2025:** The City Planning Commission (CPC) certified the OneLIC plan, officially beginning the Uniform Land Use Review Procedure (ULURP) public review process. \\n* **November 12, 2025:** The New York City Council and Council Member Julie Won unanimously voted to approve the OneLIC Neighborhood Plan following months of negotiations. \\n* **Projected 2026 and Beyond Milestones:** \\n  * **By Mid-December 2025:** ConEd was expected to submit a petition to the Public Service Commission regarding waterfront property easements.\\n  * **By June 2026:** The City is scheduled to select a design consultant for waterfront integration work.\\n  * **By June 2028:** Design, permitting, and bidding are scheduled to begin.\\n  * **By 2033:** Construction completion is targeted.\\n* **Plan Scope & Commitments:** The 54-block rezoning plan aims to generate 14,700 new housing units (including ~4,350 permanently affordable units via Mandatory Inclusionary Housing), secure nearly $2 billion in investments, fund school seats, address plumbing/infrastructure issues at NYCHA's Queensbridge Houses, and create over 5 acres of new open space under the Queensboro Bridge. \\n\\n### **Source: Akerman.com (Legal & Municipal Overview)**\\n* **November 13, 2025:** Reported that on November 12, 2025, the New York City Council approved the city-led OneLIC plan. \\n* **Key Details:** The plan covers 54 blocks in the Hunters Point and Dutch Kills sections of Long Island City. It is projected to introduce 14,700 new homes (with 4,350 permanently affordable through Mandatory Inclusionary Housing), 290,000 square feet of community facility space, 3.5 million square feet of commercial a ...[truncated]"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "kind": "outcomes",
+      "task": "Search outcomes or news for Julie Won's advocacy for NYCHA funding in the FY 2027 budget (adopted June 2026). Did she secure or push for $2 billion?"
+    },
+    "result": "* In the FY 2027 adopted budget (Schedule C), Council Member Julie Won steered discretionary and anti-poverty funding totaling $50,000 to NYCHA tenant associations in District 26: $20,000 for Queensbridge Houses Tenants Association, $15,000 for Woodside Houses Tenants Association, and $15,000 for Ravenswood Residents Association ([NYC Council Discretionary Funding](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=17)).\n* Council Member Julie Won directed $10,000 in FY 2027 local initiatives funding to the East River Development Alliance for the Urban Upbound NYCHA Program supporting public housing residents ([NYC Council Discretionary Funding](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=376)).\n* Council Member Julie Won directed $22,000 in FY 2027 housing program services funding to Woodside on the Move for tenant advocacy and mediation ([NYC Council Discretionator Funding](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=451)).\n* no evidence found in FY 2027 discretionary funding records of a $2 billion allocation secured or pushed by Julie Won for NYCHA."
+  },
+  {
+    "agent": "Researcher 6 (outcomes)",
+    "name": "search_discretionary_funding",
+    "args": {
+      "keyword": "NYCHA",
+      "council_member": "Julie Won",
+      "fiscal_year": "2027"
+    },
+    "result": "{\"awards_matched\": 1, \"total_amount\": 10000.0, \"awards_shown\": 1, \"records\": [{\"Fiscal Year\": \"2027\", \"Source\": \"Local Initiatives\", \"Council Member\": \"Won\", \"Legal Name of Organization\": \"East River Development Alliance, Inc.\", \"Amount ($)\": \"10000\", \"Agency\": \"DYCD\", \"Program Name\": \"Urban Upbound - NYCHA Program\", \"Purpose of Funds\": \"Funds will support employment services, college access and youth development, financial counseling, and tax preparation to residents living in public housing.\", \"Council District\": \"26\", \"Category\": \"Local Initiatives\", \"source_url\": \"https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=376\"}], \"fiscal_years_loaded\": \"2009–2027, with no data for FY2022–FY2026\", \"note\": \"FY2027 is Schedule C of the budget adopted 2026-06-30: the first one this Council passed. It lists awards designated at adoption; some initiatives are designated later ('post-adoption') and aren't in it. Older years come from NYC Open Data and often have no Council Member. \"}"
+  },
+  {
+    "agent": "Researcher 6 (outcomes)",
+    "name": "search_discretionary_funding",
+    "args": {
+      "keyword": "housing",
+      "fiscal_year": "2027",
+      "council_member": "Julie Won"
+    },
+    "result": "{\"awards_matched\": 6, \"total_amount\": 92000.0, \"awards_shown\": 6, \"records\": [{\"Fiscal Year\": \"2027\", \"Source\": \"Local Initiatives\", \"Council Member\": \"Won\", \"Legal Name of Organization\": \"Woodside on the Move, Inc.\", \"Amount ($)\": \"22000\", \"Agency\": \"HPD\", \"Program Name\": \"Housing Program Services\", \"Purpose of Funds\": \"Funding to support Housing program: provide tenant advocacy, landlord, tenant mediation, homeowners and prospective home buyers, seminars and foreclosure preven...\", \"Council District\": \"26\", \"Category\": \"Local Initiatives\", \"source_url\": \"https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=451\"}, {\"Fiscal Year\": \"2027\", \"Source\": \"Anti-Poverty Initiative\", \"Council Member\": \"Won\", \"Legal Name of Organization\": \"New York City Housing Authority\", \"Amount ($)\": \"20000\", \"Agency\": \"HPD\", \"Program Name\": \"Queensbridge Houses Tenants Association\", \"Purpose of Funds\": \"Funding to support Queensbridge Houses Tenants Association.\", \"Council District\": \"26\", \"Category\": \"Anti-Poverty\", \"source_url\": \"https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=17\"}, {\"Fiscal Year\": \"2027\", \"Source\": \"Anti-Poverty Initiative\", \"Council Member\": \"Won\", \"Legal Name of Organization\": \"New York City Housing Authority\", \"Amount ($)\": \"15000\", \"Agency\": \"HPD\", \"Program Name\": \"Woodside Houses Tenants Association\", \"Purpose of Funds\": \"Funding to support Woodside Houses Tenants Association.\", \"Council District\": \"26\", \"Category\": \"Anti-Poverty\", \"source_url\": \"https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=18\"}, {\"Fiscal Year\": \"2027\", \"Source\": \"Anti-Poverty Initiative\", \"Council Member\": \"Won\", \"Legal Name of Organization\": \"New York City Housing Authority\", \"Amount ($)\": \"15000\", \"Agency\": \"HPD\", \"Program Name\": \"Ravenswood Residents Association\", \"Purpose of Funds\": \"Funding to support Ravenswood Residents Ass ...[truncated]"
+  },
+  {
+    "agent": "Researcher 6 (outcomes)",
+    "name": "search_datasets",
+    "args": {
+      "query": "NYCHA capital funding budget"
+    },
+    "result": "{\"datasets\": [{\"dataset_id\": \"jr24-e7cr\", \"name\": \"Electric Consumption And Cost (2010 - Sep 2025)\", \"description\": \"Monthly consumption and cost data by borough and development. Data set includes utility vendor and meter information.\", \"columns\": [\"vendor_name\", \"other_charges\", \"kwh_charges\", \"service_end_date\", \"meter_scope\", \"tds\", \"consumption_kw\", \"rate_class\", \"meter_number\", \"service_start_date\", \"funding_source\", \"edp\", \"current_charges\", \"estimated\", \"days\", \"development_name\", \"revenue_month\", \"umis_bill_id\", \"account_name\", \"amp\", \"location\", \"rc_code\", \"meter_amr\", \"bill_analyzed\", \"borough\", \"consumption_kwh\", \"kw_charges\"], \"data_updated_at\": \"2026-02-09T14:55:10.000Z\", \"source_url\": \"https://data.cityofnewyork.us/d/jr24-e7cr\"}, {\"dataset_id\": \"46m8-77gv\", \"name\": \"Capital Budget\", \"description\": \"This dataset contains capital appropriation data by project type, budget line and source of funds. Amounts are in whole dollars. Data is created three times per year for the Preliminary Budget, Executive Budget and Adopted Budget to match appropriation numbers in the Capital Budget publication.\", \"columns\": [\"yr1_fy\", \"budline\", \"pub_date\", \"year2_amt\", \"proj_type_name\", \"funding\", \"proj_type\", \"year1_amt\", \"year3_amt\", \"year4_amt\", \"budline_title\"], \"data_updated_at\": \"2026-07-13T17:58:42.000Z\", \"source_url\": \"https://data.cityofnewyork.us/d/46m8-77gv\"}, {\"dataset_id\": \"fi59-268w\", \"name\": \"Capital Projects Database (CPDB) - Projects\", \"description\": \"The Capital Projects Database reports information at the project level on discrete capital investments from the Capital Commitment Plan.Each row is uniquely identified by its Financial Management Service (FMS) ID, and contains data pertaining to the sponsoring and managing agency.\\n\\nTo explore the da\", \"columns\": [\"magencyacro\", \"allocate_nccother\", \"maprojid\", \"commit_citycost\", \"adopt_nccstate\", \"adopt_ccexempt\", \"plannedcommit_ccnonexempt\", \"projectid\", \"spent_total\", \"magencyname\", \"nccstate\", \"totalplann ...[truncated]"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Search news/legislation/outcomes in 2026 for any action by Julie Won on 'property tax credit for arts spaces' or housing discrimination task force.",
+      "kind": "legislation"
+    },
+    "result": "That would be research round 4; the limit is 3. Reply DONE: the writer will note what's unanswered."
   }
 ]

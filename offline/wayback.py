@@ -9,7 +9,7 @@ CDX = "https://web.archive.org/cdx/search/cdx"
 ELECTION_DAY = "20251104"  # the 2025 general election: promises are what the page said before this
 
 
-def last_snapshot_before(url: str, before: str = ELECTION_DAY, retries: int = 3) -> dict | None:
+def last_snapshot_before(url: str, before: str = ELECTION_DAY, retries: int = 5) -> dict | None:
     """Return {timestamp, original, archived_url} for the last 200 OK copy before `before`, or None."""
     params = {"url": url, "output": "json", "to": before, "filter": "statuscode:200", "limit": -1, "fl": "timestamp,original"}
     for attempt in range(retries):
@@ -19,7 +19,7 @@ def last_snapshot_before(url: str, before: str = ELECTION_DAY, retries: int = 3)
             rows = r.json() if r.text.strip() else []
             break
         except (httpx.HTTPError, ValueError):
-            time.sleep(5 * (attempt + 1))  # the CDX server is slow and rate-limits: back off
+            time.sleep(8 * (attempt + 1))  # the CDX server is slow and rate-limits: back off
     else:
         return None
     if len(rows) < 2:  # the first row is the header

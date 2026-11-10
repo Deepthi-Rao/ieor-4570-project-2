@@ -21,7 +21,7 @@ from app import AgentContexts, ToolCallHooks, investigate  # noqa: E402
 OUT = Path(__file__).parent.parent / "samples"
 SAMPLES = [
     "Is Mayor Mamdani on track to build 200,000 affordable homes?",
-    "Which of Mayor Mamdani's housing promises are specific enough to check against data?",
+    "What has Council Member Julie Won done about her housing promises?",
     "Did Council Member Lincoln Restler steer discretionary funding to parks in District 33 this year?",
 ]
 

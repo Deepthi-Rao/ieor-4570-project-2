@@ -109,12 +109,13 @@ async def get_promises(ctx: RunContextWrapper[Research], official: str, topic: s
 
 @function_tool
 async def search_legislation(sponsor: str = "", keyword: str = "") -> str:
-    """Search NYC Council bills introduced this term (since 2026-01-01) by sponsor and/or title keyword.
-    Returns file numbers, titles, status, sponsors and a Legistar link for each.
+    """Search NYC Council bills (Int) and resolutions (Res) introduced this term (since 2026-01-01), by sponsor
+    and/or keyword. Returns file numbers, names, status, committee, prime sponsor and a Legistar link for each,
+    newest first; with a sponsor, the bills they're prime sponsor on come first.
 
     Args:
-        sponsor: A Council member's last name, e.g. 'Restler'.
-        keyword: A word or phrase in the bill's title, e.g. 'rent' or 'bus lane'.
+        sponsor: A Council member's name, e.g. 'Restler' or 'Tiffany Cabán'.
+        keyword: A whole word or phrase in the bill's name, title or summary, e.g. 'rent', 'bus lane', 'dog runs'.
     """
     return await asyncio.to_thread(legistar.search_legislation, sponsor, keyword)
 
@@ -222,7 +223,9 @@ Reply with the facts that answer your task and nothing else, at most 10 bullets.
 with a markdown link to the exact source it came from, using the source_url the tool returned,
 e.g. ([NYC Open Data: Housing New York](https://data.cityofnewyork.us/d/hg8x-zxpr)).
 Give numbers and dates exactly as the tools return them. If a tool returns an error or no results,
-say so in a bullet: "no evidence found" is a finding. Never fill a gap from memory."""
+say so in a bullet: "no evidence found" is a finding. A "no evidence found" bullet names the search you ran
+(e.g. "no bills sponsored by Won match 'NYCHA'") and has no link: a link to some other record would
+wrongly suggest it's the source. Never fill a gap from memory."""
 
 RESEARCHERS = {
     "promises": (
@@ -371,7 +374,7 @@ Write a short report in markdown that answers the question using only the findin
   Then three short sections: What they promised (quote it, with the archived link and date),
   What they did, What happened. In each, say plainly if the findings have nothing.
 - Keep the links: end every sentence that states a fact with the link from its finding.
-  Only use links that appear in the findings.
+  Only use links that appear in the findings. A statement that something wasn't found gets no link.
 - "No evidence found" is not the same as "didn't happen": say which one the findings support.
 - Ten months is early for multi-year promises: compare progress to the promise's own timeline.
 - Write plain, specific, neutral sentences. No adjectives that judge the official.""",
@@ -386,6 +389,8 @@ You review a draft promise-tracking report for neutrality and accuracy before it
 You get the question, the researchers' findings and the draft. Check every sentence:
 
 - Every fact must appear in the findings, and its link must be the one the findings give for it.
+  A link must be about what its sentence says: remove a link attached to "no evidence found" or to a
+  search, since it points at an unrelated record.
   Remove facts the findings don't support, and fix or remove wrong links.
 - The verdict must follow from the findings. "Broken" needs evidence the promise was dropped or
   reversed; with no evidence either way, it's "Can't determine" or "No action found".

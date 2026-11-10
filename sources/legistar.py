@@ -7,12 +7,14 @@ Two paths, as the data plan says:
     Council after you fill out its request form).
 """
 
+import json
 import os
+import re
 
 import duckdb
 import httpx
 
-from . import DATA, error, to_json
+from . import DATA, MAX_RESULT_CHARS, error, to_json
 
 API = "https://webapi.legistar.com/v1/nyc"
 SNAPSHOT = DATA / "legistar.duckdb"
@@ -55,28 +57,58 @@ def search_legislation(sponsor: str = "", keyword: str = "", since: str = TERM_S
     con = _snapshot()
     if con:
         sql = """
-            SELECT m.matter_id, m.file, m.title, m.type, m.status, m.intro_date, m.passed_date, m.guid,
-                   string_agg(s.name, '; ' ORDER BY s.sequence) AS sponsors
+            SELECT m.matter_id, m.file, m.name, m.title, m.type, m.status, m.committee, m.intro_date, m.passed_date,
+                   m.guid, m.summary, string_agg(s.name, '; ' ORDER BY s.sequence) AS sponsors
             FROM matters m LEFT JOIN sponsors s USING (matter_id)
             WHERE m.intro_date >= ?
             GROUP BY ALL
         """
-        rows = con.execute(f"SELECT * FROM ({sql}) WHERE 1=1"
-                           + (" AND strip_accents(lower(sponsors)) LIKE strip_accents(lower(?))" if sponsor else "")
-                           + (" AND (lower(title) LIKE lower(?) OR lower(file) LIKE lower(?))" if keyword else "")
-                           + f" ORDER BY intro_date DESC LIMIT {MAX_BILLS}",
-                           [since] + ([f"%{sponsor}%"] if sponsor else []) + ([f"%{keyword}%"] * 2 if keyword else [])).fetchall()
-        cols = ["matter_id", "file", "title", "type", "status", "intro_date", "passed_date", "guid", "sponsors"]
-        bills = [dict(zip(cols, r)) for r in rows]
-        for b in bills:
+        where, params = [], [since]
+        if sponsor:
+            where.append("strip_accents(lower(sponsors)) LIKE strip_accents(lower(?))")
+            params.append(f"%{sponsor}%")
+        if keyword:
+            # Titles are formal ('in relation to...'): the short name and summary say it plainly.
+            # Whole words: 'rent' shouldn't match 'current' or 'different'.
+            where.append("regexp_matches(lower(concat_ws(' ', title, name, summary, file)), ?)")
+            params.append(r"\b" + re.escape(keyword.lower().strip()) + r"\b")
+        condition = "".join(f" AND {w}" for w in where)
+        # With a sponsor, the bills they wrote (prime sponsor) come before the ones they signed on to.
+        prime_first = "strip_accents(lower(split_part(sponsors, '; ', 1))) LIKE strip_accents(lower(?)) DESC, " if sponsor else ""
+        order_params = [f"%{sponsor}%"] if sponsor else []
+        rows = con.execute(f"SELECT * FROM ({sql}) WHERE 1=1{condition} ORDER BY {prime_first}intro_date DESC LIMIT {MAX_BILLS}",
+                           params + order_params).fetchall()
+        prime_count = con.execute(
+            f"SELECT count(*) FROM ({sql}) WHERE 1=1{condition} AND strip_accents(lower(split_part(sponsors, '; ', 1))) LIKE strip_accents(lower(?))",
+            params + order_params).fetchone()[0] if sponsor else None
+        matched = con.execute(f"SELECT count(*) FROM ({sql}) WHERE 1=1{condition}", params).fetchone()[0]
+        cols = ["matter_id", "file", "name", "title", "type", "status", "committee", "intro_date", "passed_date", "guid", "summary", "sponsors"]
+        bills = []
+        for r in rows:
+            b = {k: v for k, v in zip(cols, r) if v not in (None, "")}
+            if b.get("name"):
+                b.pop("title", None)  # the formal title repeats the name at length
             b["source_url"] = bill_url(b["matter_id"], b.pop("guid"))
-        built = _snapshot_date(con)
+            names = (b.pop("sponsors", "") or "").split("; ")
+            b["prime_sponsor"] = names[0]
+            b["sponsor_count"] = len([n for n in names if n])
+            if sponsor:  # say where the member is in the list: prime sponsor, or a co-sponsor
+                b["is_prime_sponsor"] = sponsor.lower() in names[0].lower()
+            if len(b.get("summary", "")) > 300:
+                b["summary"] = b["summary"][:300] + "..."
+            bills.append(b)
+        meta = dict(con.execute("SELECT key, value FROM meta").fetchall())
         con.close()
+        while bills and len(json.dumps(bills, default=str)) > MAX_RESULT_CHARS - 800:
+            bills.pop()  # never cut a bill in half
         return to_json({
-            "from": f"Legistar snapshot built {built}",
+            "from": f"Legistar snapshot built {meta.get('built_at')}" + (f" from {meta['source']}" if meta.get("source") else ""),
+            "bills_matched": matched,
+            **({"bills_as_prime_sponsor": prime_count} if sponsor else {}),
+            "bills_shown": len(bills),
             "bills": bills,
-            "note": "Bills introduced after the snapshot date aren't here; call search_legislation_live for those."
-            if bills else "No matching bills in the snapshot. Say so; try a broader keyword or search_legislation_live.",
+            "note": ("Newest first. Bills introduced after the snapshot date aren't here. Use get_votes for roll calls."
+                     if bills else "No matching bills in the snapshot. Say so; try a broader or plainer keyword."),
         })
     return search_legislation_live(sponsor, keyword, since)
 
@@ -107,6 +139,22 @@ def search_legislation_live(sponsor: str = "", keyword: str = "", since: str = T
     return to_json({"from": "Legistar live API", "bills": bills})
 
 
+def group_votes(rows: list[tuple]) -> list[dict]:
+    """One entry per roll call: the tally, and by name everyone who didn't vote yes.
+    rows: (date, action, body, tally, passed, person, vote), as stored in the snapshot."""
+    events: dict[tuple, dict] = {}
+    for date_, action, body, tally, passed, person, vote in rows:
+        e = events.setdefault((date_, action, body), {
+            "date": str(date_), "action": action, "body": body, "tally": tally,
+            "result": "passed" if passed == 1 else "failed" if passed == 0 else None, "affirmative": 0,
+        })
+        if vote == "Affirmative":
+            e["affirmative"] += 1
+        else:
+            e.setdefault(vote.lower().replace(" ", "_"), []).append(person)  # negative, abstain, absent, ...
+    return list(events.values())
+
+
 def get_votes(bill: str) -> str:
     """bill: a matter_id (e.g. '75123') or a file number (e.g. 'Int 0123-2026')."""
     con = _snapshot()
@@ -124,7 +172,7 @@ def get_votes(bill: str) -> str:
             if votes:
                 return to_json({
                     "bill": {"matter_id": row[0], "file": row[1], "title": row[2], "source_url": bill_url(row[0], row[3])},
-                    "votes": [dict(zip(["date", "action", "body", "tally", "passed", "person", "vote"], v)) for v in votes],
+                    "votes": group_votes(votes),
                 })
         else:
             con.close()

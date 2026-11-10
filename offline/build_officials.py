@@ -44,8 +44,11 @@ SUPPLEMENT = [
         "term_start": "2026-04-28",
         "term_start_note": "date of the special election he won, not a confirmed swearing-in date",
         "elected": "special election, 2026-04-28",
-        "term_end": "2029-12-31",
-        "campaign_urls": [],
+        # A special-election term runs to the next general election: the seat was on the 2026-11-03 ballot.
+        "term_end": "2026-12-31",
+        "term_end_note": "a special-election term runs to the next general election; the seat was on the 2026-11-03 ballot, and that result isn't loaded",
+        "campaign_urls": ["https://www.carlwilsonnyc.com/"],
+        "election_day": "20260428",  # build_promises.py reads his site as archived before this date
         "source_url": "https://www.cityandstateny.com/politics/2026/04/carl-wilson-wins-nyc-council-special-election-blow-mamdani/413190/",
     },
 ]

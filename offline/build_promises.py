@@ -28,7 +28,7 @@ import litellm
 from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from offline.wayback import archived_pages, last_snapshot_before  # noqa: E402
+from offline.wayback import ELECTION_DAY, archived_pages, last_snapshot_before  # noqa: E402
 from sources.web import html_to_text  # noqa: E402
 
 DATA = Path(__file__).parent.parent / "data"
@@ -40,7 +40,7 @@ POLICY_LINK = re.compile(r"/(polic(?!y)|platform|issue|plan|agenda|priorit)", re
 MAX_SUBPAGES = 12
 
 PROMPT = """\
-Below is the text of a 2025 NYC campaign page for {name} ({role}{district}).
+Below is the text of a NYC campaign page for {name} ({role}{district}), from before the election they won.
 List every policy promise on it: something the candidate says they will do, fund, build, pass,
 stop or change if elected. Skip biography, endorsements and attacks on opponents.
 
@@ -83,10 +83,26 @@ def policy_links(html: str, page_url: str) -> list[str]:
         url = urljoin(page_url, a["href"]).split("#")[0].split("?")[0].rstrip("/")
         if "web.archive.org/web/" in url:  # an archived link: take the original back out
             url = re.sub(r"^https?://web\.archive\.org/web/\d+[a-z_]*/", "", url)
+        if re.match(r"^/[a-z]{2}(-[A-Z]{2})?/", urlparse(url).path):
+            continue  # a translation of an English page ('/es/priorities'): same promises again
         if (urlparse(url).hostname or "").removeprefix("www.") == host and POLICY_LINK.search(urlparse(url).path):
             if url not in links and url.rstrip("/") != page_url.rstrip("/"):
                 links.append(url)
     return links[:MAX_SUBPAGES]
+
+
+async def fetch_archived(url: str, tries: int = 4) -> httpx.Response | None:
+    """The Wayback Machine drops connections under load: back off and retry, then give up on this page only."""
+    for attempt in range(tries):
+        try:
+            async with httpx.AsyncClient(timeout=120, follow_redirects=True) as client:
+                page = await client.get(url)
+            if page.status_code == 200:
+                return page
+        except httpx.HTTPError:
+            pass
+        await asyncio.sleep(10 * (attempt + 1))
+    return None
 
 
 async def promises_for(person: dict) -> list[dict]:
@@ -98,15 +114,19 @@ async def promises_for(person: dict) -> list[dict]:
         if url.rstrip("/") in seen:
             continue
         seen.add(url.rstrip("/"))
-        snap = await asyncio.to_thread(last_snapshot_before, url)
+        # Most officials won the 2025 general election; a special-election winner sets their own date.
+        election_day = person.get("election_day", ELECTION_DAY)
+        snap = await asyncio.to_thread(last_snapshot_before, url, election_day)
         if not snap:
-            print(f"  {url}: no copy archived before Election Day")
+            print(f"  {url}: no copy archived before {election_day}")
             continue
-        async with httpx.AsyncClient(timeout=90, follow_redirects=True) as client:
-            page = await client.get(snap["raw_url"])
+        page = await fetch_archived(snap["raw_url"])
+        if page is None:
+            print(f"  {url}: the archive didn't answer; skipped this page (rerun to retry)")
+            continue
         if url in person.get("campaign_urls", []):  # only the pages you listed fan out, one level deep
             # Links in the HTML, plus pages the archive saved that a JavaScript-rendered site never links to
-            found = policy_links(page.text, snap["original"]) + await asyncio.to_thread(archived_pages, url, POLICY_LINK)
+            found = policy_links(page.text, snap["original"]) + await asyncio.to_thread(archived_pages, url, POLICY_LINK, election_day)
             queue += [u for u in dict.fromkeys(found) if u.rstrip("/") not in seen][:MAX_SUBPAGES]
         _, text = html_to_text(page.text)
         found = await extract(person, text[:MAX_PAGE_CHARS])

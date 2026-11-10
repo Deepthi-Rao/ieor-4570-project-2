@@ -3,37 +3,38 @@
     "agent": "Lead",
     "name": "get_promises",
     "args": {
-      "official": "mayor",
-      "topic": "homes"
+      "specific_only": false,
+      "topic": "affordable",
+      "official": "mayor"
     },
-    "result": "{\"official\": {\"name\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"term_start\": \"2026-01-01\", \"campaign_urls\": [\"https://www.zohranfornyc.com/platform\"]}, \"promises\": [{\"official\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"promise\": \"Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"quote\": \"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"category\": \"housing\", \"specific\": true, \"location\": \"\", \"target\": \"200,000 new units over 10 years\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"original_url\": \"https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\", \"hand_checked\": false}, {\"official\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"promise\": \"Invest $100 billion over 10 years to provide housing for families earning under $70,000 a year.\", \"quote\": \"This $100 billion dollar commitment over 10 years will once again make New York City a leader in providing homes for families who earn less than $70,000 a year—the median income for renters in New York—and ensure that our City’s resources are used to provide jobs with safety and dignity.\", \"category\": \"housing\", \"specific\": true, \"location\": \"\", \"target\": \"$100 billion over 10 years\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"original_url\": \"https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\", \"hand_checked\": false}, {\"official\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"promise\": \"Construct 200,000 new affordable homes over 10 years for low-income households, seniors, and work ...[truncated]"
+    "result": "{\"official\": {\"name\": \"Zohran Mamdani\", \"role\": \"Mayor\", \"district\": null, \"term_start\": \"2026-01-01\", \"campaign_urls\": [\"https://www.zohranfornyc.com/platform\"]}, \"count\": 13, \"promises\": [{\"promise\": \"He will construct more affordable housing.\", \"quote\": \"Building affordable housing.\", \"category\": \"housing\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"He will establish city-owned grocery stores to provide affordable food options.\", \"quote\": \"City-owned grocery stores.\", \"category\": \"economy\", \"specific\": false, \"source_url\": \"https://web.archive.org/web/20251103062656/https://www.zohranfornyc.com/platform\", \"snapshot_date\": \"2025-11-03\"}, {\"promise\": \"Triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"quote\": \"Zohran will triple the City’s production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes, constructing 200,000 new units over the next 10 years.\", \"category\": \"housing\", \"specific\": true, \"target\": \"200,000 new units over 10 years\", \"source_url\": \"https://web.archive.org/web/20251104044801/https://www.zohranfornyc.com/policies/housing-by-and-for-new-york\", \"snapshot_date\": \"2025-11-04\"}, {\"promise\": \"Fast-track 100% affordable developments, reducing approval times for projects like those at West 108th Street, the Inwood library, and the Greenpoint Hospital site.\", \"quote\": \"Any 100% affordable development gets fast-tracked: projects like the 200 deeply affordable units at West 108th Street, the 175 affordable units above the new Inwood library, and the 500 affordable units on the site of the long-vacant Greenpoint Hospital will no longer take years to get approved.\", \"category\": \"housing\", \"specific\": true, \"location\": \"West 108th Street, Inwood library, Greenpoint Hospital\", \"source_url\":  ...[truncated]"
   },
   {
     "agent": "Lead",
     "name": "research",
     "args": {
-      "task": "Identify housing legislation, executive orders, or budget allocations proposed or signed by Mayor Zohran Mamdani in 2026 to fund or build 200,000 affordable homes or implement his $100 billion housing plan.",
-      "kind": "legislation"
-    },
-    "result": "Council legislation data isn't loaded in this deployment (no Legistar snapshot or token). Don't send legislation researchers; the writer will say bills and votes couldn't be checked."
-  },
-  {
-    "agent": "Lead",
-    "name": "research",
-    "args": {
-      "task": "Find any official NYC data, housing department reports, or statistics from 2026 showing the number of affordable housing units built, funded, or started under Mayor Zohran Mamdani.",
+      "task": "Identify the number of affordable housing units constructed, started, or financed in NYC under Mayor Zohran Mamdani in 2026, and whether there are metrics tracking the progress toward the 200,000 affordable homes goal.",
       "kind": "outcomes"
     },
-    "result": "* HPD's Affordable Housing Production by Building dataset records 11,585 affordable units started across 539 projects with a project start date on or after January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* For the baseline previous year (January 1, 2025 – December 31, 2025), HPD records 29,277 affordable housing units started across 854 projects ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* Regarding completed construction, HPD records 15,660 affordable units completed across 474 projects with a building completion date on or after January 1, 2026 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* For the preceding baseline year (January 1, 2025 – December 31, 2025), HPD records 25,697 affordable housing units completed across 792 projects ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* Checkbook NYC spending and contract data for the Department of Housing Preservation and Development was temporarily unavailable to query due to a temporary access blockage ([Checkbook NYC](https://www.checkbooknyc.com/))."
+    "result": "* In 2026 (from January 1, 2026, through the September 30, 2026 update), HPD recorded 11,585 affordable housing units across 539 projects with a project start date ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* For baseline comparison, in full year 2025, HPD recorded 29,277 affordable housing units across 854 projects with a project start date ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* Regarding housing completions, 15,660 affordable housing units across 474 projects reached building completion in 2026 up to September 30 ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* In full year 2025, 25,697 affordable housing units across 792 projects reached building completion ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr)).\n* The Department of Housing Preservation and Development (HPD) tracks affordable housing production progress via its publicly updated datasets (such as `hg8x-zxpr` and `hq68-rnsi`), which measure units started and completed under the city's housing plans ([NYC Open Data: Affordable Housing Production by Building](https://data.cityofnewyork.us/d/hg8x-zxpr))."
   },
   {
     "agent": "Lead",
     "name": "research",
     "args": {
-      "task": "Search for news articles from 2026 describing the progress, status, setbacks, or achievements of Mayor Zohran Mamdani's plan to build 200,000 affordable homes over 10 years.",
-      "kind": "news"
+      "kind": "news",
+      "task": "Search for news coverage of Mayor Zohran Mamdani's housing policy and progress toward his campaign promise of building 200,000 affordable homes in 2026, including announcements or criticisms."
     },
-    "result": "* On May 26, 2026, Mayor Zohran Kwame Mamdani and Deputy Mayor Leila Bozorg released *“Block by Block: The Housing Plan for a New Era,”* a 10-year housing blueprint ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* The plan sets a target to build 200,000 new affordable homes and preserve another 200,000 affordable homes over the decade ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* The 10-year initiative is backed by a $22 billion capital investment in housing over its first five years ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* Out of the 200,000 new affordable homes, the plan dedicates 30% for extremely low-income households and 20% for very low-income residents ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).\n* Annual production is scheduled to scale from over 14,000 new homes in fiscal year 2027 to over 21,000 new homes annually by fiscal year 2031 ([HousingWire](https://www.housingwire.com/articles/nyc-affordable-housing-200000/)).\n* In August 2026, housing analysts noted that hitting the 10-year goal of 200,000 new and 200,000 preserved homes requires maintaining a consistent pace of 10,000 new and 10,000 preserved units every six months ([City Limits](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)).\n* On October 1, 2026, Mayor Mamdani and Department of City Planning Director Sideya Sherman announced the first 12 community districts put on a fast track for affordable housing to advance the initiative ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/10/mamdani-administration-puts-12-neighborhoods-on-fast-track-for-a))."
+    "result": "* Mayor Zohran Kwame Mamdani released his housing plan on May 26, 2026, titled *Block by Block: The Housing Plan for a New Era*, which sets a twin target to build 200,000 new affordable homes and preserve another 200,000 existing affordable homes over the next decade ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* The 10-year housing production and preservation plan is backed by a capital commitment of $22 billion in affordable housing funds over its first five years ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* Early analysis from February 2026 outlined the 200,000 new rent-stabilized, publicly subsidized, union-built home goal under a projected 10-year, $100 billion framework utilizing municipal bonds, City-owned land, and state/federal debt cap adjustments ([RentReboot](https://rentreboot.com/guide/mamdani-200k-rent-stabilized-apartments-nyc)).\n* Deputy Mayor for Housing and Planning Leila Bozorg and Housing Commissioner Dina Levy joined Mayor Mamdani to announce the blueprint, which incorporates transit-oriented zoning reforms, fast-tracking tools, and an expansion of the Open Door program ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* The plan includes the largest City capital investment in the New York City Housing Authority (NYCHA) in recent history to repair aging stock and position NYCHA as a public developer ([NYC Mayor's Office](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* The administration committed to implementing the Construction Justice Act, establishing a $40 per hour minimum wage and benefit standard for construction workers on City-financed housing projects ([NYC Mayor's Office](https://www.nyc.gov/mayors- ...[truncated]"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Check NYC Council legislation and budget actions in 2026 related to funding Mayor Mamdani's housing plan, specifically any $70 billion capital plan or municipal bond funding for affordable housing.",
+      "kind": "legislation"
+    },
+    "result": "* no bills sponsored match \"Mamdani\"\n* no bills sponsored match \"70 billion\"\n* no bills sponsored match \"municipal bond\""
   },
   {
     "agent": "Researcher 1 (outcomes)",
@@ -41,80 +42,103 @@
     "args": {
       "query": "affordable housing production"
     },
-    "result": "{\"datasets\": [{\"dataset_id\": \"hg8x-zxpr\", \"name\": \"Affordable Housing Production by Building\", \"description\": \"The Department of Housing Preservation and Development (HPD) reports on projects, buildings, and units that began after January 1, 2014, and are counted towards either the Housing New York plan (1/1/2014 – 12/31/2021) or the Housing Our Neighbors: A Blueprint for Housing & Homelessness plan (1/1/202\", \"columns\": [\"borough\", \"very_low_income_units\", \"_4_br_units\", \"building_completion_date\", \"all_counted_units\", \"street_name\", \"prevailing_wage_status\", \"council_district\", \"building_id\", \"project_name\", \"latitude\", \"unknown_br_units\", \"extended_affordability_status\", \"_1_br_units\", \"middle_income_units\", \"longitude_internal\", \"community_board\", \"moderate_income_units\", \"extremely_low_income_units\", \"neighborhood_tabulation_area\", \"postcode\", \"project_start_date\", \"counted_homeownership_units\", \"project_completion_date\", \"latitude_internal\", \"bbl\", \"_3_br_units\", \"_5_br_units\", \"studio_units\", \"_6_br_units\", \"bin\", \"other_income_units\", \"low_income_units\", \"project_id\", \"counted_rental_units\", \"house_number\", \"longitude\", \"census_tract\", \"reporting_construction_type\", \"_2_br_units\"], \"data_updated_at\": \"2026-09-30T19:21:51.000Z\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\"}, {\"dataset_id\": \"hq68-rnsi\", \"name\": \"Affordable Housing Production by Project\", \"description\": \"The Department of Housing Preservation and Development (HPD) reports on projects, buildings, and units that began after January 1, 2014, and are counted towards either the Housing New York plan (1/1/2014 – 12/31/2021) or the Housing Our Neighbors: A Blueprint for Housing & Homelessness plan (1/1/202\", \"columns\": [\"all_counted_units\", \"project_start_date\", \"middle_income\", \"project_id\", \"project_completion_date\", \"very_low_income\", \"program_group\", \"moderate_income\", \"counted_homeownership_units\", \"counted_rental_units\", \"senior_units\", \"project_name\", \"low_income_units\", \"other\", \" ...[truncated]"
+    "result": "{\"datasets\": [{\"dataset_id\": \"hg8x-zxpr\", \"name\": \"Affordable Housing Production by Building\", \"description\": \"The Department of Housing Preservation and Development (HPD) reports on projects, buildings, and units that began after January 1, 2014, and are counted towards either the Housing New York plan (1/1/2014 – 12/31/2021) or the Housing Our Neighbors: A Blueprint for Housing & Homelessness plan (1/1/202\", \"columns\": [\"_6_br_units\", \"very_low_income_units\", \"census_tract\", \"_4_br_units\", \"borough\", \"_2_br_units\", \"counted_homeownership_units\", \"low_income_units\", \"street_name\", \"total_units\", \"counted_rental_units\", \"building_id\", \"other_income_units\", \"studio_units\", \"_5_br_units\", \"unknown_br_units\", \"_1_br_units\", \"middle_income_units\", \"moderate_income_units\", \"extremely_low_income_units\", \"building_completion_date\", \"longitude\", \"neighborhood_tabulation_area\", \"postcode\", \"project_completion_date\", \"project_start_date\", \"project_name\", \"longitude_internal\", \"community_board\", \"project_id\", \"house_number\", \"all_counted_units\", \"extended_affordability_status\", \"bbl\", \"prevailing_wage_status\", \"latitude_internal\", \"reporting_construction_type\", \"council_district\", \"bin\", \"latitude\"], \"data_updated_at\": \"2026-09-30T19:21:51.000Z\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\"}, {\"dataset_id\": \"hq68-rnsi\", \"name\": \"Affordable Housing Production by Project\", \"description\": \"The Department of Housing Preservation and Development (HPD) reports on projects, buildings, and units that began after January 1, 2014, and are counted towards either the Housing New York plan (1/1/2014 – 12/31/2021) or the Housing Our Neighbors: A Blueprint for Housing & Homelessness plan (1/1/202\", \"columns\": [\"all_counted_units\", \"planned_tax_benefit\", \"extended_affordability_status\", \"prevailing_wage_status\", \"project_id\", \"total_units\", \"extremely_low_income_units\", \"other\", \"program_group\", \"counted_rental_units\", \"senior_units\", \"middle_income\", \"project_name\", \"very_low_in ...[truncated]"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "",
+      "keyword": "housing"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 149, \"bills_shown\": 17, \"bills\": [{\"matter_id\": 79663, \"file\": \"Res 0704-2026\", \"name\": \"LU 155 - 300 W 17th Street HDFC.HPO.FY27: Block 740, Lot 37, Manhattan, Community District 4, Council District 3.\", \"type\": \"Resolution\", \"status\": \"Adopted\", \"committee\": \"Committee on Finance\", \"intro_date\": \"2026-10-22\", \"passed_date\": \"2026-10-22\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79663&GUID=FA891180-CF83-4180-BBC1-4F27931AFC28\", \"prime_sponsor\": \"Linda Lee\", \"sponsor_count\": 1}, {\"matter_id\": 79665, \"file\": \"Res 0707-2026\", \"name\": \"LU 157 - Albans HDFC.PLP.FY27: Block 12334, Lot 273, Queens, Community District 2, Council District 27.\", \"type\": \"Resolution\", \"status\": \"Adopted\", \"committee\": \"Committee on Finance\", \"intro_date\": \"2026-10-22\", \"passed_date\": \"2026-10-22\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79665&GUID=01BA4AB3-63C9-4F81-BFD2-1AB996B0FEBC\", \"prime_sponsor\": \"Linda Lee\", \"sponsor_count\": 1}, {\"matter_id\": 79668, \"file\": \"Res 0708-2026\", \"name\": \"LU 157 - Albans HDFC.PLP.FY27: Block 12334, Lot 273, Queens, Community District 2, Council District 27.\", \"type\": \"Resolution\", \"status\": \"Adopted\", \"committee\": \"Committee on Finance\", \"intro_date\": \"2026-10-22\", \"passed_date\": \"2026-10-22\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=79668&GUID=9C7AABC2-C25B-4FF1-A3DC-A10C1490165B\", \"prime_sponsor\": \"Linda Lee\", \"sponsor_count\": 1}, {\"matter_id\": 79666, \"file\": \"Res 0706-2026\", \"name\": \"LU 156 - MHANY Cluster 2.NR Rehab: Block 2265 Lots 2 and 3; Block 2282, Lot 12; Block 3107, Lot 29; Block 2620, Lot 34, Bronx, Community Districts 1, 3, and 6, Council Districts 8, 15, and 17.\", \"type\": \"Resolution\", \"status\": \"Adopted\", \"committee\": \"Committee on Finance\", \"intro_date\": \"2026-10-22\", \"passed_date\": \"2026-10-22\", \"source_url\": \"h ...[truncated]"
   },
   {
     "agent": "Researcher 2 (news)",
     "name": "web_search",
     "args": {
-      "query": "Zohran Mamdani 200000 affordable homes 2026"
+      "query": "Zohran Mamdani 200,000 affordable homes housing policy 2026"
     },
-    "result": "{\"summary\": \"Based on the sources, here are the facts regarding Zohran Mamdani's 200,000 affordable homes initiative, reported with dates and kept separate by source:\\n\\n### **Source: RentReboot.com (February 13, 2026)**\\n* **Policy Details:** Prior to taking office/early in the policy rollout, campaign material stated that as mayor, Zohran Mamdani would triple the city's production of publicly subsidized, permanently affordable, union-built, rent-stabilized homes to create 200,000 new units over a 10-year period. \\n* **Funding:** The plan envisioned funding largely through municipal bonds and City capital investments, noting a figure of $100 billion over 10 years (including $70 billion in new City capital). It also called on Albany and Washington to loosen debt/bond caps.\\n\\n### **Source: NYC.gov (May 26, 2026)**\\n* **The Plan Release:** Mayor Zohran Kwame Mamdani and Deputy Mayor for Housing and Planning Leila Bozorg released a blueprint titled *“Block by Block: The Housing Plan for a New Era.”*\\n* **Targets:** The official plan sets a 10-year goal to build 200,000 new affordable homes while preserving an additional 200,000 affordable homes. \\n* **Investment:** The initiative is backed by a $22 billion capital investment in housing over its first five years.\\n\\n### **Source: News 12 / YouTube transcript (May 27, 2026)**\\n* **Plan Highlights:** Mayor Zohran Mamdani rolled out *Block by Block: The Housing Plan for a New Era*, featuring the goal to build 200,000 new affordable housing units and preserve/stabilize another 200,000 over the next decade.\\n* **Financing & Scaling:** The plan carries a $22 billion capital commitment price tag over five years. Production is projected to start at over 14,000 new homes in 2027 and gradually scale up to over 21,000 new homes per year by 2031.\\n\\n### **Source: HousingWire (May 27, 2026)**\\n* **Breakdown of Units:** Out of the 200,000 new affordable homes, 30% will serve extremely low-income households, and 20% will target very  ...[truncated]"
+    "result": "{\"summary\": \"Based on the retrieved sources from 2026, here are the reported details regarding Zohran Mamdani’s housing policy involving 200,000 affordable homes, separated by source:\\n\\n### **Source: RentReboot (Published February 13, 2026)**\\n* **Policy Goal:** Proposes creating 200,000 new rent-stabilized, publicly subsidized, union-built homes over a 10-year period.\\n* **Target Audience:** Low-income households, seniors, and working families.\\n* **Funding/Investment:** Estimated at a total of $100 billion over 10 years, which includes $70 billion in new City capital financed through municipal bonds. \\n* **Additional Methods:** Calls for expanding existing 100% affordable housing programs (such as HPD's SARA and ELLA programs, and HRA's Master Lease Program), using City-owned land, fast-tracking projects, and urging state and federal levels (Albany and Washington) to loosen debt and bond caps.\\n\\n### **Sources: NYC.gov, LaborPress, Cozen O'Connor, Vital City, News 12, Nepyork, Mirage News (Published May – November 2026)**\\n* **Plan Name:** Released on May 26, 2026, by Mayor Zohran Kwame Mamdani and Deputy Mayor for Housing and Planning Leila Bozorg as a 99-page blueprint titled *Block by Block: The Housing Plan for a New Era*.\\n* **Policy Goal:** Sets a twin target over the next decade to **build 200,000 new affordable homes** *and* **preserve/stabilize an additional 200,000 existing affordable homes** (totaling 400,000 units addressed).\\n* **Funding/Investment:** Backed by a capital commitment of **$22 billion** in affordable housing funds over its first five years. \\n* **Additional Methods & Provisions:** \\n  * Implements land use agendas and zoning reforms to boost production across all five boroughs, including transit-oriented development and fast-tracking tools.\\n  * Includes a historic City capital investment for NYCHA (New York City Housing Authority)—noted as $5.6 billion over 5 years in some reports—to act as a public developer and repair aging stock.\\n  ...[truncated]"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "keyword": "capital plan",
+      "sponsor": ""
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 1, \"bills_shown\": 1, \"bills\": [{\"matter_id\": 77863, \"file\": \"Int 0397-2026\", \"name\": \"Capital plant inventory and maintenance.\", \"type\": \"Introduction\", \"status\": \"Committee\", \"committee\": \"Committee on Transportation and Infrastructure\", \"intro_date\": \"2026-01-29\", \"summary\": \"This bill would update the asset inventory management report to require disclosure of additional information about the City’s infrastructure and its maintenance. This bill would also require that the Design and Development Corporation (DDC) work with registered architects or engineers to provide cen...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77863&GUID=6E61F672-769E-4D9F-8FC2-92F381C8518F\", \"prime_sponsor\": \"Lincoln Restler\", \"sponsor_count\": 3}], \"note\": \"Newest first. Bills introduced after the snapshot date aren't here. Use get_votes for roll calls.\"}"
   },
   {
     "agent": "Researcher 1 (outcomes)",
     "name": "query_open_data",
     "args": {
       "dataset_id": "hg8x-zxpr",
-      "select": "sum(all_counted_units), count(project_id)",
-      "order": "project_start_date DESC",
-      "limit": 20,
       "group": "",
-      "where": "project_start_date >= '2026-01-01'"
+      "select": "sum(all_counted_units)",
+      "where": "project_start_date >= '2026-01-01'",
+      "limit": 20,
+      "order": "project_start_date DESC"
     },
-    "result": "{\"error\": \"Open Data returned 400: {\\\"message\\\":\\\"Query coordinator error: query.soql.column-not-in-group-bys; Column 'project_start_date' is not in group by; position: Map(row -> 1, column -> 155, line -> \\\\\\\"SELECT sum(`all_counted_units`) AS `sum_all_counted_units`, count(`project_id`) AS `count_project_id` WHERE `project_start_date` >= \\\\\\\\\\\\\\\"2026-01-01\\\\\\\\\\\\\\\" ORDER BY `project_start_date` DESC NULL FIRST LIMIT 20\\\\\\\\n                      \", \"how_to_fix\": \"Check column names with search_datasets; text values need single quotes.\"}"
+    "result": "{\"error\": \"Open Data returned 400: {\\\"message\\\":\\\"Query coordinator error: query.soql.column-not-in-group-bys; Column 'project_start_date' is not in group by; position: Map(row -> 1, column -> 112, line -> \\\\\\\"SELECT sum(`all_counted_units`) AS `sum_all_counted_units` WHERE `project_start_date` >= \\\\\\\\\\\\\\\"2026-01-01\\\\\\\\\\\\\\\" ORDER BY `project_start_date` DESC NULL FIRST LIMIT 20\\\\\\\\n                                                                 \", \"how_to_fix\": \"Check column names with search_datasets; text values need single quotes.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "keyword": "bonds",
+      "sponsor": ""
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 1, \"bills_shown\": 1, \"bills\": [{\"matter_id\": 77186, \"file\": \"Int 0659-2026\", \"name\": \"Requiring owners of vacant residential properties undergoing foreclosure to post bonds for maintenance purposes.\", \"type\": \"Introduction\", \"status\": \"Committee\", \"committee\": \"Committee on Housing and Buildings\", \"intro_date\": \"2026-02-12\", \"summary\": \"This bill would require an owner of a vacant residential property undergoing foreclosure to provide a $5,000 bond to the Commissioner of Finance to address housing maintenance, building, and sanitation violations during vacancy and the foreclosure action. After an action concludes, the Commissioner ...\", \"source_url\": \"https://legistar.council.nyc.gov/LegislationDetail.aspx?ID=77186&GUID=AA09C0C1-DDBF-4027-BC0F-2B63F2D0BA74\", \"prime_sponsor\": \"Nantasha M. Williams\", \"sponsor_count\": 2}], \"note\": \"Newest first. Bills introduced after the snapshot date aren't here. Use get_votes for roll calls.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "",
+      "keyword": "Mamdani"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "",
+      "keyword": "70 billion"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 3 (legislation)",
+    "name": "search_legislation",
+    "args": {
+      "sponsor": "",
+      "keyword": "municipal bond"
+    },
+    "result": "{\"from\": \"Legistar snapshot built 2026-11-10 from github.com/jehiah/nyc_legislation (a mirror of the Legistar API)\", \"bills_matched\": 0, \"bills_shown\": 0, \"bills\": [], \"note\": \"No matching bills in the snapshot. Say so; try a broader or plainer keyword.\"}"
+  },
+  {
+    "agent": "Researcher 2 (news)",
+    "name": "fetch_page",
+    "args": {
+      "url": "https://www.laborpress.org/mayor-mamdani-releases-plan-to-build-200000-affordable-homes/"
+    },
+    "result": "{\"error\": \"fetch_page only reads official and archival sites, not www.laborpress.org.\", \"how_to_fix\": \"For news sites, rely on web_search's summary and cite its source URLs.\"}"
   },
   {
     "agent": "Researcher 1 (outcomes)",
     "name": "query_open_data",
     "args": {
-      "group": "",
-      "where": "project_start_date >= '2026-01-01'",
-      "select": "sum(all_counted_units), count(project_id)",
-      "order": "",
       "limit": 20,
-      "dataset_id": "hg8x-zxpr"
+      "dataset_id": "hg8x-zxpr",
+      "select": "sum(all_counted_units), count(project_id)",
+      "where": "project_start_date >= '2026-01-01'",
+      "group": "",
+      "order": ""
     },
     "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=project_start_date+%3E%3D+%272026-01-01%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"11585\", \"count_project_id\": \"539\"}]}"
-  },
-  {
-    "agent": "Researcher 1 (outcomes)",
-    "name": "query_open_data",
-    "args": {
-      "select": "sum(all_counted_units), count(project_id)",
-      "where": "project_start_date >= '2025-01-01' AND project_start_date <= '2025-12-31'",
-      "order": "",
-      "group": "",
-      "dataset_id": "hg8x-zxpr",
-      "limit": 20
-    },
-    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=project_start_date+%3E%3D+%272025-01-01%27+AND+project_start_date+%3C%3D+%272025-12-31%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"29277\", \"count_project_id\": \"854\"}]}"
-  },
-  {
-    "agent": "Researcher 1 (outcomes)",
-    "name": "query_open_data",
-    "args": {
-      "order": "",
-      "select": "sum(all_counted_units), count(project_id)",
-      "limit": 20,
-      "where": "building_completion_date >= '2026-01-01'",
-      "dataset_id": "hg8x-zxpr",
-      "group": ""
-    },
-    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=building_completion_date+%3E%3D+%272026-01-01%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"15660\", \"count_project_id\": \"474\"}]}"
-  },
-  {
-    "agent": "Researcher 1 (outcomes)",
-    "name": "query_open_data",
-    "args": {
-      "select": "sum(all_counted_units), count(project_id)",
-      "group": "",
-      "limit": 20,
-      "order": "",
-      "where": "building_completion_date >= '2025-01-01' AND building_completion_date <= '2025-12-31'",
-      "dataset_id": "hg8x-zxpr"
-    },
-    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=building_completion_date+%3E%3D+%272025-01-01%27+AND+building_completion_date+%3C%3D+%272025-12-31%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"25697\", \"count_project_id\": \"792\"}]}"
   },
   {
     "agent": "Researcher 2 (news)",
@@ -126,14 +150,86 @@
   },
   {
     "agent": "Researcher 1 (outcomes)",
+    "name": "query_open_data",
+    "args": {
+      "where": "project_start_date >= '2025-01-01' AND project_start_date <= '2025-12-31'",
+      "limit": 20,
+      "select": "sum(all_counted_units), count(project_id)",
+      "dataset_id": "hg8x-zxpr",
+      "order": "",
+      "group": ""
+    },
+    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=project_start_date+%3E%3D+%272025-01-01%27+AND+project_start_date+%3C%3D+%272025-12-31%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"29277\", \"count_project_id\": \"854\"}]}"
+  },
+  {
+    "agent": "Researcher 1 (outcomes)",
+    "name": "query_open_data",
+    "args": {
+      "limit": 20,
+      "select": "sum(all_counted_units), count(project_id)",
+      "where": "building_completion_date >= '2026-01-01'",
+      "dataset_id": "hg8x-zxpr",
+      "group": "",
+      "order": ""
+    },
+    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=building_completion_date+%3E%3D+%272026-01-01%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"15660\", \"count_project_id\": \"474\"}]}"
+  },
+  {
+    "agent": "Researcher 1 (outcomes)",
+    "name": "query_open_data",
+    "args": {
+      "order": "",
+      "dataset_id": "hg8x-zxpr",
+      "where": "building_completion_date >= '2025-01-01' AND building_completion_date <= '2025-12-31'",
+      "select": "sum(all_counted_units), count(project_id)",
+      "group": "",
+      "limit": 20
+    },
+    "result": "{\"dataset_id\": \"hg8x-zxpr\", \"source_url\": \"https://data.cityofnewyork.us/d/hg8x-zxpr\", \"api_url\": \"https://data.cityofnewyork.us/resource/hg8x-zxpr.json?%24limit=20&%24where=building_completion_date+%3E%3D+%272025-01-01%27+AND+building_completion_date+%3C%3D+%272025-12-31%27&%24select=sum%28all_counted_units%29%2C+count%28project_id%29\", \"row_count\": 1, \"rows\": [{\"sum_all_counted_units\": \"25697\", \"count_project_id\": \"792\"}]}"
+  },
+  {
+    "agent": "Researcher 1 (outcomes)",
     "name": "search_spending",
     "args": {
+      "kind": "contracts",
       "keyword": "affordable housing",
       "fiscal_year": 2026,
       "vendor": "",
-      "agency": "hpd",
-      "kind": "contracts"
+      "agency": "hpd"
     },
-    "result": "{\"error\": \"Checkbook NYC is temporarily blocking requests.\", \"how_to_fix\": \"Don't retry now. Say spending data was unavailable.\"}"
+    "result": "{\"source_url\": \"https://www.checkbooknyc.com/\", \"query\": {\"kind\": \"contracts\", \"agency_code\": \"806\", \"vendor\": \"\", \"fiscal_year\": 2026, \"keyword\": \"affordable housing\"}, \"total_matching_in_checkbook\": \"0\", \"records_shown\": 0, \"records\": [], \"note\": \"\"}"
+  },
+  {
+    "agent": "Lead",
+    "name": "research",
+    "args": {
+      "task": "Search for news or expert analysis in late 2026 evaluating Mayor Mamdani's progress on building 200,000 affordable homes, including whether critics say the city is on track or falling behind.",
+      "kind": "news"
+    },
+    "result": "* In May 2026, Mayor Zohran Mamdani released *Block by Block: The Housing Plan for a New Era*, pledging to build 200,000 new affordable housing units and preserve 200,000 additional units backed by a $22 billion capital commitment over five years ([nyc.gov](https://www.nyc.gov/mayors-office/news/2026/05/mayor-mamdani-releases--block-by-block--the-housing-plan-for-a-n)).\n* Bushwick Daily reported on the plan's fine print, noting that while it targets 200,000 new rent-stabilized homes, only half of the newly financed apartments are designated for the lowest-income New Yorkers ([bushwickdaily.com](https://bushwickdaily.com/news/mamdanis-plan-to-build-200000-affordable-homes-has-a-catch-half-of-them-are-not-for-the-lowest-income-new-yorkers/)).\n* In August 2026, City Hall announced that the administration financed 12,491 affordable homes (comprising 6,632 new units, 4,951 preserved units, and 908 NYCHA PACT units) during the first six months of 2026 ([citylimits.org](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)).\n* City Limits reported that this first-half output was the lowest six-month affordable housing production total since 2022 ([citylimits.org](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)).\n* Critics and analysts noted that to meet the 10-year goal of 200,000 new homes, the administration would need to average 10,000 new units every six months—a pace that no recent mayoral administration has achieved ([citylimits.org](https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/)).\n* Housing experts cautioned against reading too deeply into the six-month dip, pointing out that development pipelines take years to move, early administration numbers reflect transition periods, and broader constraints like construction costs and interest ra ...[truncated]"
+  },
+  {
+    "agent": "Researcher 4 (news)",
+    "name": "web_search",
+    "args": {
+      "query": "Mayor Mamdani affordable homes 200,000 progress late 2026"
+    },
+    "result": "{\"summary\": \"Based on news reports from mid-to-late 2026, here is what the sources state regarding Mayor Zohran Mamdani’s housing plan and its progress toward the 200,000 affordable homes target:\\n\\n### **May 14 – May 28, 2026 Sources (Plan Announcement)**\\n* **Official City Announcements & Local Outlets (May 26–28, 2026):** Mayor Zohran Mamdani officially rolled out his housing plan, titled *Block by Block: The Housing Plan for a New Era*. The plan sets a goal to build 200,000 new affordable housing units and preserve or stabilize another 200,000 units over the next decade. It is backed by a $22 billion capital commitment over five years. The city set specific production goals to build over 14,000 new homes in 2027, scaling up to over 21,000 new homes per year by 2031, or roughly 8,000 HPD/HDC subsidized units annually alongside other incentive programs. \\n* **Bushwick Daily (May 14, 2026):** Reported on the details of the *Block by Block* blueprint ahead of its full rollout, noting that the 10-year goal targets 200,000 new rent-stabilized homes and 200,000 preserved homes. However, the outlet pointed out a \\\"catch\\\" in the fine print: only half of the newly financed apartments are reserved for the lowest-income New Yorkers.\\n\\n### **August 14, 2026 Source (First 6-Month Progress Data)**\\n* **City Limits (August 14, 2026):** Reported on the city's housing production numbers for the first six months of 2026 under the new administration. \\n  * *Progress Metrics:* City Hall announced that the city financed the creation and preservation of **12,491 affordable homes** in the first half of the year (comprising 6,632 new units, 4,951 preserved units, and 908 public housing units preserved via NYCHA's PACT program). \\n  * *Pacing Context:* The article noted that to stay on pace for the 10-year goal of 200,000 new and 200,000 preserved units, the administration would need to create 10,000 new units and preserve 10,000 more every six months—a pace that no recent administrati ...[truncated]"
+  },
+  {
+    "agent": "Researcher 4 (news)",
+    "name": "web_search",
+    "args": {
+      "query": "City Limits Zohran Mamdani affordable housing production ticked down in first half of 2026"
+    },
+    "result": "{\"summary\": \"According to **City Limits** (in an article published on **August 14, 2026**):\\n* The city financed the creation and preservation of 12,491 affordable homes in the first six months of 2026 under Mayor Zohran Mamdani, marking the lowest total since 2022 (the first year of Eric Adams' administration).\\n* The total included 4,951 preserved units, 6,632 new units, and 908 public housing units preserved via NYCHA’s PACT program.\\n* Housing experts cautioned against drawing strong conclusions from just six months of data, noting that development projects take years, administrations spend their first months staffing up and setting plans, and broader nationwide trends like material costs, tariffs, and high insurance rates impact development. \\n* By comparison, the outgoing Adams administration financed 15,380 affordable units during its final half-year.\\n\\n*(Note: There are no conflicting facts reported across the primary sources regarding these numbers, as the figures originate from the mayor's office release covered by City Limits and other outlets on August 11–14, 2026.)*\", \"sources\": [{\"title\": \"citylimits.org\", \"url\": \"https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/\"}, {\"title\": \"nyc.gov\", \"url\": \"https://www.nyc.gov/mayors-office/news/2026/08/mamdani-administration-financed-more-than-12-000-affordable-home\"}], \"note\": \"Cite the source URLs, not the summary. Source titles are often just the publisher's domain.\"}"
+  },
+  {
+    "agent": "Researcher 4 (news)",
+    "name": "fetch_page",
+    "args": {
+      "url": "https://citylimits.org/citys-affordable-housing-production-ticked-down-in-first-half-of-2026-and-what-else-happened-this-week/"
+    },
+    "result": "{\"error\": \"fetch_page only reads official and archival sites, not citylimits.org.\", \"how_to_fix\": \"For news sites, rely on web_search's summary and cite its source URLs.\"}"
   }
 ]

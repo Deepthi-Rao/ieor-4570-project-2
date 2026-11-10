@@ -5,6 +5,7 @@ data/promises.jsonl   one promise per line, each with the archived page it came 
 """
 
 import json
+import time
 import unicodedata
 
 from . import DATA, error, to_json
@@ -65,7 +66,13 @@ def get_promises(official: str, topic: str = "", specific_only: bool = False) ->
     if not matches:
         return error(f"No official in scope matches '{official}'.", "Call list_officials to see names and districts.")
     if len(matches) > 1:
-        return to_json({"ambiguous": [{"name": o["name"], "role": o["role"], "district": o.get("district")} for o in matches]})
+        # 'District 3' matches the member who left and the one who replaced them: prefer whoever's in office.
+        today = time.strftime("%Y-%m-%d")
+        current = [o for o in matches if o.get("term_start", "") <= today <= (o.get("term_end") or "9999")]
+        if len(current) == 1:
+            matches = current
+        else:
+            return to_json({"ambiguous": [{"name": o["name"], "role": o["role"], "district": o.get("district")} for o in matches]})
     person = matches[0]
     promises = [p for p in load_promises() if p["official"] == person["name"]]
     if topic:
@@ -82,4 +89,10 @@ def get_promises(official: str, topic: str = "", specific_only: bool = False) ->
         })
     # Only the fields the agents use: the full records for a busy official overflow the result cap.
     slim = [{k: p[k] for k in FIELDS if p.get(k) not in (None, "")} for p in promises]
-    return to_json({"official": person, "count": len(slim), "promises": slim}, limit=30_000)
+    notes = ["'quote' is the candidate's own words, checked against the archived page; 'promise', 'category' "
+             "and 'specific' are a model's reading of it."]
+    older = sorted({p["snapshot_date"][:4] for p in promises if p.get("snapshot_date", "9") < "2025"})
+    if older:
+        notes.append(f"Some promises come from pages last archived in {', '.join(older)}, likely an earlier campaign: "
+                     "say so, with the snapshot date, when you use them.")
+    return to_json({"official": person, "count": len(slim), "promises": slim, "note": " ".join(notes)}, limit=30_000)
