@@ -155,10 +155,11 @@ async def search_spending(kind: str = "contracts", agency: str = "", vendor: str
 
     Args:
         kind: 'contracts' (registered expense contracts) or 'spending' (payments).
-        agency: A 3-digit Checkbook agency code, or a known name like 'hpd' or 'education'.
-        vendor: A vendor or payee name, e.g. 'City Harvest'.
-        fiscal_year: City fiscal year; FY2026 runs July 2025–June 2026.
-        keyword: Words to look for in the returned records, e.g. 'childcare'.
+        agency: A 3-digit city agency code, or a name like 'hpd', 'parks', 'dot', 'dsny', 'dycd', 'dhs', 'education'.
+        vendor: A payee name, e.g. 'City Harvest'. Only with kind='spending': contracts can't be searched by vendor.
+        fiscal_year: City fiscal year; FY2026 runs July 2025–June 2026, FY2027 July 2026–June 2027.
+        keyword: For contracts, words in the contract's purpose, e.g. 'tree planting' (searched by Checkbook).
+            For spending, a filter on the payments returned.
     """
     return await checkbook.search_spending(kind, agency, vendor, fiscal_year, keyword)
 
@@ -166,11 +167,13 @@ async def search_spending(kind: str = "contracts", agency: str = "", vendor: str
 @function_tool
 async def search_discretionary_funding(keyword: str = "", council_member: str = "", fiscal_year: str = "") -> str:
     """Search Council discretionary funding awards: which organizations and projects a member steered money to.
+    Covers FY2027 (the budget this Council adopted in June 2026, with each award's page in the PDF) and FY2009–FY2021.
+    Returns the number and total of matching awards, and the largest ones.
 
     Args:
-        keyword: An organization, program, park or school name.
-        council_member: A Council member's last name.
-        fiscal_year: e.g. '2026'.
+        keyword: An organization, program, park or school name, e.g. 'McCarren' or 'park'.
+        council_member: A Council member's name ('Restler', 'Pierina Sanchez') or a district ('District 33').
+        fiscal_year: e.g. '2027'. There's no data for FY2022–FY2026.
     """
     return await asyncio.to_thread(funding.search_discretionary_funding, keyword, council_member, fiscal_year)
 
