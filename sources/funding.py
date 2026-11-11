@@ -10,6 +10,7 @@ Schedule C row carries a source_url to its page in the PDF.
 
 import json
 import re
+import threading
 
 import duckdb
 
@@ -26,22 +27,36 @@ KEEP = {
 }
 
 
+DB = DATA / "funding.duckdb"  # built from the CSVs by offline/build_funding_db.py
+_lock = threading.Lock()
+_db: duckdb.DuckDBPyConnection | None = None
+
+
+def _load() -> duckdb.DuckDBPyConnection | None:
+    """Open the prebuilt funding database once, read-only, with DuckDB's memory capped.
+    Parsing the CSVs here instead took ~300 MB, and with parallel researchers it ran a 512 MB
+    Cloud Run instance out of memory, which dropped the page's connection mid-run."""
+    global _db
+    with _lock:
+        if _db is None and DB.exists():
+            _db = duckdb.connect(str(DB), read_only=True, config={"memory_limit": "128MB", "threads": 2})
+        return _db
+
+
 def search_discretionary_funding(keyword: str = "", council_member: str = "", fiscal_year: str = "") -> str:
-    files = sorted(FUNDING.glob("*.csv")) + sorted(FUNDING.glob("*.csv.gz"))
-    if not files:
-        return error("No discretionary funding data loaded.", "Run: uv run offline/build_schedule_c.py")
+    db = _load()
+    if db is None:
+        return error("No discretionary funding data loaded.", "Run: uv run offline/build_funding_db.py")
     if not (keyword or council_member):
         return error("Give a keyword (organization, program, park, school) or a council_member.")
     origins = json.loads(SOURCES.read_text()) if SOURCES.exists() else {}
-    con = duckdb.connect()
-    paths = ", ".join("'" + str(f).replace("'", "''") + "'" for f in files)  # views can't take parameters
-    con.execute(f"CREATE VIEW funding AS SELECT * FROM read_csv_auto([{paths}], union_by_name = true, filename = true, all_varchar = true)")
-    columns = [r[0] for r in con.execute("DESCRIBE funding").fetchall()]
+    con = db.cursor()  # one cursor per call: researchers search in parallel threads
+    columns = [r[0] for r in con.execute("DESCRIBE funding").fetchall() if r[0] != "search_text"]
 
     where, params = [], []
     if keyword:
         # Search every column: an organization, program name or purpose can carry the keyword.
-        where.append("strip_accents(lower(CAST(f AS VARCHAR))) LIKE strip_accents(lower(?))")
+        where.append("search_text LIKE strip_accents(lower(?))")
         params.append(f"%{keyword}%")
     if council_member:
         district = re.fullmatch(r"(?:council\s+)?district\s*(\d+)", council_member.strip(), re.I)
@@ -64,7 +79,7 @@ def search_discretionary_funding(keyword: str = "", council_member: str = "", fi
     condition = " AND ".join(where)
 
     rows = con.execute(
-        f'SELECT * FROM funding f WHERE {condition} ORDER BY "Fiscal Year" DESC, TRY_CAST("Amount ($)" AS DOUBLE) DESC LIMIT {MAX_ROWS}',
+        f'SELECT * EXCLUDE (search_text) FROM funding f WHERE {condition} ORDER BY "Fiscal Year" DESC, TRY_CAST("Amount ($)" AS DOUBLE) DESC LIMIT {MAX_ROWS}',
         params,
     ).fetchall()
     matched, total = con.execute(

@@ -53,6 +53,7 @@ MAX_ROUNDS = 3
 LEAD_TURNS = 10
 RESEARCHER_TURNS = 10
 TOOL_RESULT_CHARS = 2_000  # how much of each tool result /chat returns in tool_calls
+HEARTBEAT_SECONDS = 15  # /run sends a keep-alive this often while nothing else happens
 
 
 @dataclass
@@ -560,7 +561,13 @@ async def run(question: str, session_id: str = ""):
         try:
             yield f"data: {json.dumps({'type': 'start', 'run_id': run_id, 'session_id': session_id})}\n\n"
             while True:
-                event = await queue.get()
+                try:
+                    event = await asyncio.wait_for(queue.get(), timeout=HEARTBEAT_SECONDS)
+                except asyncio.TimeoutError:
+                    # The Writer and Reviewer can take a minute with nothing to report. A comment line
+                    # keeps proxies from closing a stream that looks idle; EventSource ignores it.
+                    yield ": keepalive\n\n"
+                    continue
                 yield f"data: {json.dumps(event, default=str)}\n\n"
                 if event["type"] in ("report", "clarify", "error"):
                     break

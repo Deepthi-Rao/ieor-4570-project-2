@@ -69,3 +69,13 @@ def test_big_results_stay_whole_json():
 
 def test_needs_a_filter():
     assert "error" in json.loads(search())
+
+
+def test_search_database_matches_the_csvs(awards):
+    """data/funding.duckdb is built from the CSVs by offline/build_funding_db.py: rebuild it after changing them."""
+    from sources.funding import _load
+
+    con = _load().cursor()  # the app's own connection: DuckDB allows one configuration per file
+    fy2027 = con.execute("""SELECT count(*) FROM funding WHERE filename = 'schedule_c_fy2027.csv.gz'""").fetchone()[0]
+    con.close()
+    assert fy2027 == len(awards), "data/funding.duckdb is stale: run uv run offline/build_funding_db.py"
