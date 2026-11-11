@@ -10,7 +10,7 @@ and a team of research agents checks it against the record, in three layers:
 It gives each promise a verdict (**Kept**, **In progress**, **No action found**, **Broken** or
 **Can't determine**), cites a source for every fact, and says plainly when the data can't answer.
 
-**Live:** see `deploy_url` in [submission.json](submission.json). Sign in with a Columbia account (Cloud Run IAP).
+**Try it live: [ieor-4570-project-2-git-64584940628.europe-west1.run.app](https://ieor-4570-project-2-git-64584940628.europe-west1.run.app)** (sign in with a Columbia account; access is through Cloud Run IAP). The same link is the `deploy_url` in [submission.json](submission.json).
 
 ## Who it's for
 
