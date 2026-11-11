@@ -11,23 +11,31 @@
 const contextStyle = document.createElement("style");
 contextStyle.textContent = `
     :root { --context-width: min(40vw, 32rem); }
-    body { margin-right: var(--context-width); }
+    /* Hidden until a run starts: showContext() opens it, and only then does the page make room. */
+    body { transition: margin-right 0.3s ease; }
+    html.ctx-open body { margin-right: var(--context-width); }
     #context-panel {
         position: fixed; top: 0; right: 0; bottom: 0;
         width: var(--context-width);
         overflow-y: auto;
         padding: 1.5rem;
-        background: #fafafa;
-        border-left: 1px solid #e0e0e0;
+        /* The page's own colors when it defines them (light or dark), these otherwise */
+        background: var(--card, #fafafa);
+        color: var(--ink, inherit);
+        border-left: 1px solid var(--line, #e0e0e0);
         font-family: ui-monospace, monospace;
         font-size: 0.75rem;
+        transform: translateX(100%);
+        visibility: hidden;
+        transition: transform 0.3s ease, visibility 0.3s;
     }
+    html.ctx-open #context-panel { transform: none; visibility: visible; }
     #context-panel h2, .ctx-head {
         font-family: system-ui, sans-serif;
         font-size: 0.75rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: #999;
+        color: var(--muted, #999);
     }
     #context-panel h2 { margin-bottom: 1rem; }
     /* Several agents: a timeline grid, one column per agent */
@@ -36,14 +44,14 @@ contextStyle.textContent = `
     .ctx-grid { display: grid; grid-template-columns: repeat(var(--ctx-cols, 1), minmax(16rem, 1fr)); column-gap: 1rem; }
     .ctx-head {
         position: sticky; top: 0; z-index: 1;
-        background: #fafafa;
+        background: var(--card, #fafafa);
         padding: 1rem 0 0.6rem;
         border-top: 3px solid transparent;
         margin-bottom: 0.5rem;
     }
-    .ctx-head.active { color: #000; border-top-color: #000; }
+    .ctx-head.active { color: var(--ink, #000); border-top-color: var(--ink, #000); }
     .ctx-wait { border-left: 2px dashed #ccc; margin-left: 1px; }
-    .ctx-note { font-family: system-ui, sans-serif; color: #999; padding: 0.2rem 0.75rem; margin-bottom: 0.5rem; }
+    .ctx-note { font-family: system-ui, sans-serif; color: var(--muted, #999); padding: 0.2rem 0.75rem; margin-bottom: 0.5rem; }
     .ctx-note.divider { border-top: 1px solid #ccc; padding-top: 0.5rem; }
     .context-msg {
         border-left: 3px solid #999;
@@ -59,12 +67,14 @@ contextStyle.textContent = `
     .context-msg.tool { border-color: #f59e0b; }
     .context-msg.new { animation: context-flash 1.5s; }
     .context-msg.thinking { border-color: #ccc; color: #aaa; }
-    .context-msg summary { cursor: pointer; color: #666; }
+    .context-msg summary { cursor: pointer; color: var(--muted, #666); }
     .context-msg.copied { opacity: 0.55; }
-    @keyframes context-flash { from { background: #fef3c7; } }
+    @keyframes context-flash { from { background: rgba(245, 158, 11, 0.22); } }
     @media (max-width: 800px) {
-        body { margin-right: 0; height: auto !important; flex-direction: column; }
-        #context-panel { position: static; width: 100%; border-left: none; }
+        html.ctx-open body { margin-right: 0; }
+        body { height: auto !important; flex-direction: column; }
+        #context-panel { position: static; width: 100%; border-left: none; display: none; transform: none; }
+        html.ctx-open #context-panel { display: block; }
         #context-panel.timeline { height: 70vh; }
     }
 `;
@@ -82,6 +92,7 @@ let contextQueue = Promise.resolve(); // one fetch at a time, so timeline events
 let timeline = null; // several agents: built on the first timeline response
 
 function showContext(sessionId) {
+    document.documentElement.classList.add("ctx-open"); // the first activity of a run slides the panel in
     contextQueue = contextQueue.then(() => loadContext(sessionId)).catch((e) => console.error(e));
     return contextQueue;
 }
