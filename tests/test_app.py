@@ -91,4 +91,4 @@ def test_guardrail_block_message(monkeypatch):
     monkeypatch.setattr(app.Runner, "run", block)
     hooks = app.ToolCallHooks(app.AgentContexts(), lambda e: None)
     text = asyncio.run(app.screen([{"role": "user", "content": "Chicago mayor?"}], hooks))
-    assert text.startswith("Chicago isn't covered.") and "New York City" in text
+    assert text.startswith("Chicago isn't covered.") and "Try, for example" in text

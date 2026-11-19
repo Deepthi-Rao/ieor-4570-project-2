@@ -416,8 +416,8 @@ def transcript(conversation: list[dict]) -> str:
 # any doubt or error lets the request through (the Lead still asks for clarification).
 MAX_QUESTION_CHARS = 1_500
 SCOPE_NOTE = (
-    "This tool only checks campaign promises by New York City's current elected officials: "
-    "Mayor Zohran Mamdani and the members of the New York City Council (in office since 2026). "
+    "This tool only checks campaign promises by the Mayor of New York City and members of the "
+    "New York City Council in office since 2026. "
 )
 guardrail = Agent(
     name="Guardrail",
@@ -429,7 +429,8 @@ campaign promises, using NYC bills, votes, budgets, city data and the news.
 Read the conversation and reply with exactly one line:
 ALLOW
 or
-BLOCK: <one short, friendly sentence on why it's out of scope>
+BLOCK: <one short, friendly sentence saying it's out of scope and that the tool covers only NYC's
+       mayor and City Council; don't name any official>
 
 ALLOW anything that could be about those officials or NYC city government: a named official, "the
 mayor", a district or neighborhood, an NYC policy topic (housing, rent, buses, parks, police...),
@@ -458,7 +459,8 @@ async def screen(conversation: list[dict], hooks: PanelHooks) -> str | None:
         return None  # fail open: a broken guardrail must not take the agent down
     if verdict.upper().startswith("BLOCK"):
         reason = verdict.split(":", 1)[1].strip() if ":" in verdict else ""
-        return f"{reason} {SCOPE_NOTE}Try, for example: \"Is Mayor Mamdani on track to build 200,000 affordable homes?\"".strip()
+        # The model's reason, if it gave one, else the standard note: not both, which reads as repetition.
+        return f"{reason or SCOPE_NOTE.strip()} Try, for example: \"Is the mayor on track to build 200,000 affordable homes?\""
     return None
 
 
