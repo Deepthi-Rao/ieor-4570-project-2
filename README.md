@@ -23,7 +23,10 @@ local enough that a model can't answer from memory (see the no-tools baselines b
 
 ```
             ┌──────────── asks a clarifying question if the request is vague
- question → Lead ── get_promises (offline corpus) ──┐
+ question → Guardrail (flash-lite, ~1 s) ── off-topic? → polite "NYC officials only" reply, no research
+            │ in scope
+            ▼
+            Lead ── get_promises (offline corpus) ──┐
             │  fans out 2–4 Researchers in ONE turn, │ findings
             │  each in a fresh context, in parallel  │
             ├─► Researcher (promises)    get_promises, fetch_page, web_search
@@ -35,7 +38,8 @@ local enough that a model can't answer from memory (see the no-tools baselines b
          Writer (findings only → cited verdict) ─► Reviewer (neutrality + every fact/link checked against findings) ─► report
 ```
 
-- **Five agent shapes:** Lead, Researcher (4 specialist kinds), Writer, Reviewer. The Reviewer is the "neutrality reviewer" from our data plan.
+- **Six agent shapes:** Guardrail, Lead, Researcher (4 specialist kinds), Writer, Reviewer. The Reviewer is the "neutrality reviewer" from our data plan.
+- **Guardrail (saves compute):** before the Lead runs, a one-turn `gemini-3.5-flash-lite` check (`app.py: screen`) bounces requests that clearly aren't about NYC's current mayor or Council: other cities, NY State or federal officials, past mayors, unrelated tasks (code, homework, jokes), and attempts to change the agent's instructions. Questions over 1,500 characters are refused in code with no model call. It's tuned to let anything plausibly in scope through (vague questions still reach the Lead, which asks for details), and if the check itself fails, the request goes through. A blocked request costs one small model call instead of a Lead run plus up to 8 Researchers.
 - **Parallel fan-out:** the Lead calls `research` several times in one turn. Each Researcher is a fresh `Agent` run with its own context and tools (`app.py: research`).
 - **Goes back for gaps:** the Lead reads the findings and sends more Researchers for any missing layer, up to 2 more rounds. Code caps it, not just the prompt: `MAX_ROUNDS = 3` (researchers sent in one turn are one round), `MAX_RESEARCHERS = 8`, `RESEARCH_SECONDS = 180`, `LEAD_TURNS = 10`, `RESEARCHER_TURNS = 10`, which keeps every answer inside the graders' 5 minutes.
 - **Clarification:** a question without an official and a promise/topic gets a clarifying question instead of research, with examples drawn from the real roster (never from the model's memory). Your answer continues the same session. A real run (4 s, no tools called):

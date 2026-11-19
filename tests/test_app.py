@@ -56,3 +56,39 @@ def test_lead_instructions_are_built_per_run(monkeypatch):
     assert "Today is 2026-12-01" in text
     assert "District 3: Carl Wilson (elected in a special election, 2026-04-28)" in text
     assert "Erik D. Bottcher (left office 2026-02-03)" in text
+
+
+def test_guardrail_blocks_long_and_empty_input_without_a_model_call(monkeypatch):
+    import asyncio
+    import app
+
+    async def no_model(*a, **k):
+        raise AssertionError("the model shouldn't be called")
+    monkeypatch.setattr(app.Runner, "run", no_model)
+    hooks = app.ToolCallHooks(app.AgentContexts(), lambda e: None)
+    assert "too long" in asyncio.run(app.screen([{"role": "user", "content": "x" * 5000}], hooks))
+    assert "only checks" in asyncio.run(app.screen([{"role": "user", "content": "  "}], hooks))
+
+
+def test_guardrail_fails_open(monkeypatch):
+    import asyncio
+    import app
+
+    async def broken(*a, **k):
+        raise TimeoutError
+    monkeypatch.setattr(app.Runner, "run", broken)
+    hooks = app.ToolCallHooks(app.AgentContexts(), lambda e: None)
+    assert asyncio.run(app.screen([{"role": "user", "content": "Did the mayor freeze rents?"}], hooks)) is None
+
+
+def test_guardrail_block_message(monkeypatch):
+    import asyncio
+    import types
+    import app
+
+    async def block(*a, **k):
+        return types.SimpleNamespace(final_output="BLOCK: Chicago isn't covered.")
+    monkeypatch.setattr(app.Runner, "run", block)
+    hooks = app.ToolCallHooks(app.AgentContexts(), lambda e: None)
+    text = asyncio.run(app.screen([{"role": "user", "content": "Chicago mayor?"}], hooks))
+    assert text.startswith("Chicago isn't covered.") and "New York City" in text
