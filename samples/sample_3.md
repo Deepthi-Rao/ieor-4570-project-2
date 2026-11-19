@@ -2,46 +2,50 @@
 
 **Question:** Did Council Member Lincoln Restler steer discretionary funding to parks in District 33 this year?
 
-## Agent (report, 62 s, 7 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news))
+## Agent (report, 69 s, 8 tool calls by Lead, Researcher 1 (outcomes), Researcher 2 (news))
 
-Yes, Council Member Lincoln Restler allocated discretionary funding to parks and open spaces in District 33 in the FY 2027 budget ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=231)). 
+Yes, Council Member Lincoln Restler steered discretionary funding to parks, playgrounds, and open spaces in District 33 through multiple allocations in 2026 (for Fiscal Year 2027). 
 
-There are no campaign promises regarding parks on file for Council Member Restler ([https://lincolnforcouncil.com/issues](https://lincolnforcouncil.com/issues)). Additionally, no 2026 news coverage or announcements were found regarding him steering discretionary or capital funding to District 33 parks, though this lack of news evidence does not mean the funding did not occur ([City & State NY](https://www.cityandstateny.com/nyn-media/2026/09/restler-joins-neverending-war-against-late-nonprofit-payments/416276/)). Official budget documents confirm that the following discretionary allocations were made:
+### Discretionary Funding Allocations
+* He allocated $35,000 to the Open Space Alliance for North Brooklyn, Inc. for Parks and Recreation Services ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
+* He allocated $18,000 to the Department of Parks and Recreation for McCarren & McGorlrick Parks under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=234)).
+* He allocated $17,000 to Newtown Creek Alliance, Inc. for Environmental Education & Community Stewardship ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
+* He allocated $10,000 to the Brooklyn Heights Association, Inc. for Parks and Recreation Services ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=231)).
+* He allocated $10,000 to the New York Restoration Project for Parks and Recreation Services ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
+* He allocated $5,000 to Brooklyn Bridge Park Boathouse, Inc. for Family Paddle programming & Kayak Skills and Safety Training ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=346)).
+* He allocated $5,000 to the Citizens Committee for New York City, Inc. for community cleanups in McCarren Park and District 33 ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=357)).
+* He allocated $5,000 to the Council on the Environment, Inc. for the McCarren Park Demonstration Garden ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=364)).
+* He allocated $5,000 to the Fund for the City of New York, Inc. to support WNYC Transmitter Park programming and outreach ([NYC Council Discretionary Funding: FY 2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=382)).
+* His office secured $285,000 through private contributions and discretionary Council funding to expand tree beds, install tree guards, and add tree planters through a partnership with the North Brooklyn Parks Alliance ([North Brooklyn Parks Alliance: District 33 Tree Fund](https://support.nbkparks.org/campaign/district-33-tree-fund/c440038)).
 
-* **Open Space Alliance for North Brooklyn, Inc.**: $35,000 for Council District 33 under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
-* **Department of Parks and Recreation**: $18,000 for McCarren & McGorlrick Parks under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=234)).
-* **Newtown Creek Alliance, Inc.**: $17,000 for Environmental Education & Community Stewardship in Council District 33 under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
-* **Brooklyn Heights Association, Inc.**: $10,000 for Council District 33 under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=231)).
-* **New York Restoration Project**: $10,000 for Council District 33 under the Parks Equity Initiative ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=237)).
-* **Brooklyn Bridge Park Boathouse, Inc.**: $5,000 for Family Paddle programming and Kayak Skills and Safety Training under Local Initiatives ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=346)).
-* **Citizens Committee for New York City, Inc.**: $5,000 for Community Cleanups in McCarren Park and Council District 33 under Local Initiatives ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=357)).
-* **Council on the Environment, Inc.**: $5,000 for the maintenance of the McCarren Park Demonstration Garden under Local Initiatives ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=364)).
-* **Fund for the City of New York, Inc.**: $5,000 to support WNYC Transmitter Park, including community outreach and educational programming, under Local Initiatives ([NYC Council Discretionary Funding: FY2027 Schedule C](https://council.nyc.gov/budget/wp-content/uploads/sites/54/2026/06/Fiscal-2027-Schedule-C-Final.pdf#page=382)).
+*(Note: The official promise corpus does not contain any archived campaign promises from Lincoln Restler specifically regarding parks.)*
 
 ## Baseline: gemini-3.5-flash, no tools, no system prompt
 
-New York City Council Member Lincoln Restler (representing District 33, which spans Brooklyn Heights, DUMBO, Greenpoint, Williamsburg, Downtown Brooklyn, and adjacent neighborhoods) has consistently directed substantial discretionary and capital funding toward local parks. 
+Because my knowledge is limited to January 2025 and I do not have real-time internet access, I cannot confirm the specific discretionary funding allocations Council Member Lincoln Restler may have made or announced *most recently* if they occurred after that date. 
 
-While the exact details depend on the specific fiscal year cycle you are referring to (such as the FY 2025 budget adopted in June 2024 or the ongoing FY 2026 process), Restler has made funding open space and parks a central priority of his office's discretionary spending.
+However, looking at his established legislative record and the annual NYC budget cycles up to the **Fiscal Year 2025 budget (adopted in late June 2024)**, Restler has consistently steered significant discretionary and capital funding to parks and open spaces in District 33 (which covers Greenpoint, Williamsburg, Brooklyn Heights, DUMBO, Downtown Brooklyn, and Boerum Hill). 
 
-Here is how he has directed funding to District 33 parks through various discretionary mechanisms:
+Here is how Restler typically allocates discretionary and capital funding to District 33 parks:
 
 ### 1. Capital Discretionary Allocations
-Council Members receive millions of dollars in capital discretionary funding each fiscal year to fund long-term physical improvements. Restler has steered significant portions of this funding to district parks. Key projects in recent budget cycles have included:
-*   **McGolrick Park (Greenpoint):** Funding for playground upgrades, path repaving, and restoration efforts.
-*   **Cooper Park (East Williamsburg):** Capital dollars directed toward upgrading the dog run, sports courts, and overall park infrastructure.
-*   **Transmitter Park (Greenpoint):** Funding for repairs to the pier, open green space maintenance, and safety improvements.
-*   **Commodore Barry Park (Fort Greene/Navy Yard):** Capital allocations to improve the pool, playground facilities, and turf.
+Each year, NYC Council Members receive millions of dollars in capital discretionary funding to allocate to local infrastructure, including schools, housing, and parks. Restler has historically prioritized parks and environmental projects. Some notable park initiatives in his district that have received council funding support include:
+*   **Cooper Park:** Funding for playground, court, or dog run renovations.
+*   **McGolrick Park & McCarren Park:** Regular funding for maintenance, upgrades, and community-led park groups.
+*   **Bushwick Inlet Park:** Restler has been highly active in pushing the city to fully fund and build out the remaining parcels of this long-promised waterfront park.
+*   **Commodore Barry Park:** Upgrades to the playground and sports facilities.
 
-### 2. Expense Discretionary Funding (Community Grants)
-In addition to large physical capital projects, Council Members allocate smaller "expense" discretionary grants to local non-profit organizations. Restler regularly steers this funding to local volunteer park groups (often referred to as "Friends of" groups) and conservancies to assist with maintenance, gardening, programming, and community events. Beneficiaries have included:
-*   The **Friends of Cooper Park**
-*   The **Friends of McGolrick Park**
-*   The **North Brooklyn Parks Alliance** (which helps maintain and program several parks under the BQE and along the waterfront)
+### 2. Participatory Budgeting (PB)
+Restler runs a yearly **Participatory Budgeting** cycle in District 33, allowing community members to vote directly on how to spend $1 million of his capital discretionary budget. 
+*   In District 33, park improvements—such as planting new street trees, installing bioswales, and renovating local playgrounds or dog runs—frequently rank among the top vote-getters and are funded directly through this process.
 
-### 3. Participatory Budgeting
-Restler’s office utilizes **Participatory Budgeting (PB)**, a democratic process where District 33 residents vote directly on how to spend $1 million or more of the Council Member's capital discretionary budget. Year after year, park improvements are among the most popular projects proposed and voted on by residents. Winning PB projects in District 33 have frequently included tree planting, park water-fountain installations, and minor playground renovations.
+### 3. Expense Discretionary Funding (Schedule C)
+In the annual city budget, Council Members also allocate "expense" discretionary funding (detailed in the Council’s "Schedule C"). Restler routinely directs these smaller grants to local non-profits and conservancies that maintain, activate, and program local parks, such as:
+*   **Friends of Cooper Park**
+*   **Friends of Transmitter Park**
+*   **North Brooklyn Parks Alliance**
 
-***
-
-*If you are looking for a specific line-item allocation from the most recent New York City Council discretionary database, you can view the complete, searchable database of Council Member allocations on the official [New York City Council website](https://council.nyc.gov/) under their "Budget" section, which lists every individual expense and capital allocation made by Council Member Restler for the current fiscal year.*
+### How to Check the Most Recent "This Year" Allocations:
+If you are looking for allocations made during the **FY 2026 budget process** (which is negotiated in the spring of 2025 and adopted by July 1, 2025) or any mid-year announcements:
+1.  **NYC Council Discretionary Funding Database:** You can search the official NYC Council website's discretionary funding database by Fiscal Year, Council Member (Lincoln Restler), and organization/agency (such as the NYC Department of Parks and Recreation).
+2.  **District 33 Newsletter / Website:** Lincoln Restler's office regularly publishes detailed breakdowns of where his discretionary capital and participatory budgeting dollars go each fiscal year.
