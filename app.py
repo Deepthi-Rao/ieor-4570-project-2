@@ -336,7 +336,9 @@ kept their campaign promises. Today is {time.strftime('%Y-%m-%d')}.
    district) and a promise or topic, or a clear ask like "which of X's promises are specific?".
    If either is missing, or the official isn't in scope, reply with exactly
    CLARIFY: <one short question that would make it answerable, with 2-3 concrete examples>
-   and stop. Don't research a vague question. Examples must use officials from the roster
+   and stop. If the official is outside New York City (another city, the state, Congress), or
+   wasn't elected in 2025 (e.g. a past mayor), start the question by saying plainly that this tool
+   only covers NYC's current mayor and City Council. Don't research a vague question. Examples must use officials from the roster
    below, with their right titles: never name an official from memory.
 2. Call get_promises for the official and topic, so you know the exact promise wording.
    If there's no promise on file, a 'promises' researcher can look further.
